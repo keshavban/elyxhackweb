@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, CheckCircle, Clock, ArrowRight, User, FlaskConical, Stethoscope, TrendingUp, MessageSquare, Users } from 'lucide-react';
+import { Calendar, CheckCircle, Clock, ArrowRight, User, FlaskConical, Stethoscope, TrendingUp, MessageSquare, Users, Heart, Activity, Utensils, Dumbbell, Brain } from 'lucide-react';
 
 interface JourneyTimelineProps {
   currentWeek: number;
@@ -15,110 +15,199 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     if (week >= 1 && week <= 1) {
       phases.push({
         week: '1',
-        title: 'Welcome & Discovery - Member Onboarding',
+        title: 'Week 1: The Wake-Up Call',
         status: 'completed',
         icon: User,
         color: 'from-blue-500 to-blue-600',
-        description: 'This is member onboarding where you share your medical history, priorities, and dietary preferences with our expert team.',
+        description: 'Mr. Arun Sharma begins his transformative health journey with Elyx.',
         activities: [
-          'The member shares medical history, priorities, diets that they follow, and have test discussions with the Elyx team',
-          'Complete member onboarding and comprehensive health assessment',
-          'Discussion of health priorities and personal wellness goals',
-          'Review of current dietary habits and lifestyle patterns',
-          'Initial test discussions and health baseline establishment',
-          'Introduction to your dedicated Elyx care team members'
+          'Initial consultation and comprehensive health assessment',
+          'Medical history review and goal setting',
+          'Introduction to the Elyx care team',
+          'Baseline measurements and lifestyle evaluation'
         ],
         teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)'],
-        insights: 'This foundational week establishes your health baseline and creates the personalized framework for your entire journey. Your medical history and goals become the cornerstone of your customized intervention plan.',
-        detailedDescription: 'During your first week, we focus on understanding you as a complete person - not just your medical data. This is member onboarding where you share your medical history, priorities, and dietary preferences with our expert team. We conduct comprehensive test discussions to establish your health baseline and introduce you to the dedicated professionals who will guide your transformation journey.'
+        insights: 'This foundational week establishes your health baseline and creates the personalized framework for your entire journey.',
+        detailedDescription: 'Mr. Arun Sharma, a 45-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.',
+        conversations: [
+          {
+            speaker: 'Dr. Warren',
+            message: 'Mr. Sharma, your stress levels and family history are concerning. We need to take a comprehensive approach to your health.',
+            alignment: 'left'
+          },
+          {
+            speaker: 'Arun',
+            message: 'I know I need to make changes, but I travel constantly for work. How can I maintain consistency?',
+            alignment: 'right'
+          },
+          {
+            speaker: 'Ruby',
+            message: 'That\'s exactly why we\'re here. We\'ll create a plan that works with your lifestyle, not against it.',
+            alignment: 'left'
+          }
+        ]
       });
     }
 
     if (week >= 2 && week <= 4) {
       phases.push({
         week: '2-4',
-        title: 'Comprehensive Health Assessment & Testing',
+        title: 'Week 2-4: Building Momentum',
         status: 'completed',
         icon: FlaskConical,
         color: 'from-green-500 to-green-600',
-        description: 'Elyx collects biological samples and puts you through our complete test scan suite.',
+        description: 'Comprehensive testing and initial lifestyle modifications begin.',
         activities: [
-          'Elyx collects biological samples/have them go through test scan suite',
-          'The physical exam of the member is done',
-          'Complete test scan suite including advanced biomarker panels',
-          'Thorough physical examination conducted by medical team',
-          'Body composition analysis and metabolic assessment',
-          'Cardiovascular health evaluation and fitness baseline testing'
+          'Complete blood panel and biomarker analysis',
+          'Sleep study and stress assessment',
+          'Nutritional evaluation with Carla',
+          'Initial exercise program with Rachel'
         ],
-        teamInvolved: ['Dr. Warren (Medical Strategist)', 'Advik (Performance Scientist)', 'Lab Specialists'],
-        insights: 'These weeks provide the scientific foundation for your personalized health plan. Every test is carefully selected based on your individual risk factors and health goals.',
-        detailedDescription: 'Weeks 2-4 represent the comprehensive data collection phase of your journey. Elyx collects biological samples and puts you through our complete test scan suite. This includes advanced blood panels, metabolic assessments, and a thorough physical examination. Our performance scientist analyzes your data to identify patterns and opportunities for optimization.'
+        teamInvolved: ['Dr. Warren', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Advik (Performance Scientist)'],
+        insights: 'Early testing reveals key areas for improvement, setting the stage for targeted interventions.',
+        detailedDescription: 'The comprehensive testing phase reveals elevated cholesterol, poor sleep quality, and high cortisol levels. The team begins implementing targeted interventions.',
+        conversations: [
+          {
+            speaker: 'Carla',
+            message: 'Your cholesterol is at 245 mg/dL. We need to focus on anti-inflammatory foods and omega-3s.',
+            alignment: 'left'
+          },
+          {
+            speaker: 'Arun',
+            message: 'I eat out constantly for business. How do I control what I eat?',
+            alignment: 'right'
+          },
+          {
+            speaker: 'Carla',
+            message: 'I\'ll work with your assistant to pre-select restaurants and meals. We\'ll make this seamless.',
+            alignment: 'left'
+          }
+        ],
+        keyMetrics: [
+          { metric: 'Cholesterol', value: '245 mg/dL', status: 'elevated' },
+          { metric: 'Sleep Quality', value: '4/10', status: 'poor' },
+          { metric: 'Stress Level', value: '8/10', status: 'high' }
+        ]
       });
     }
 
     if (week >= 4 && week <= 8) {
       phases.push({
         week: '4-8',
-        title: 'Results Analysis & Personalized Plan Development',
+        title: 'Week 4-8: Finding Rhythm',
         status: week >= 8 ? 'completed' : 'in-progress',
         icon: Stethoscope,
         color: 'from-purple-500 to-purple-600',
-        description: 'Test results are shared with the member intermittently and categorized into action buckets.',
+        description: 'Establishing sustainable routines and seeing first improvements.',
         activities: [
-          'Test results are shared with the member intermittently. Tests results are categorized into three buckets: "major issues", "need followup", "all okay"',
-          'Different people in the Elyx team talk to the member and discuss the results',
-          'Get member\'s commitment on what interventions (lifestyle changes they want to make)',
-          'Results organized into comprehensive action categories',
-          'Personalized nutrition, exercise, and supplement protocols developed',
-          'Member commitment obtained for lifestyle interventions and changes'
+          'Daily meditation practice implementation',
+          'Travel-friendly exercise routines',
+          'Supplement protocol optimization',
+          'Weekly progress check-ins'
         ],
-        teamInvolved: ['Dr. Warren (Medical Strategist)', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Advik (Performance Scientist)'],
-        insights: 'Your test results reveal unique patterns that inform a completely personalized approach. Each recommendation is backed by your specific biomarkers and health profile.',
-        detailedDescription: 'During weeks 4-8, your test results are carefully analyzed and shared with you intermittently. We categorize findings into three key buckets: major issues requiring immediate action, areas needing follow-up monitoring, and markers that are performing well. Different people in the Elyx team discuss these results with you, ensuring you understand every aspect of your health picture and commit to the interventions that will drive the best outcomes.'
+        teamInvolved: ['Ruby', 'Rachel', 'Advik'],
+        insights: 'Consistency begins to pay off with measurable improvements in energy and sleep.',
+        detailedDescription: 'Arun starts seeing real changes. His energy levels improve, and he successfully maintains his routine during a business trip to Singapore.',
+        conversations: [
+          {
+            speaker: 'Advik',
+            message: 'Your HRV data shows a 15% improvement. The stress management techniques are working.',
+            alignment: 'left'
+          },
+          {
+            speaker: 'Arun',
+            message: 'I actually felt energized after my Singapore trip instead of exhausted. This is new for me.',
+            alignment: 'right'
+          },
+          {
+            speaker: 'Rachel',
+            message: 'That\'s the power of consistent movement. Your body is adapting beautifully.',
+            alignment: 'left'
+          }
+        ],
+        keyMetrics: [
+          { metric: 'Energy Level', value: '+25%', status: 'improved' },
+          { metric: 'HRV', value: '+15%', status: 'improved' },
+          { metric: 'Sleep Quality', value: '6.5/10', status: 'improving' }
+        ]
       });
     }
 
-    if (week >= 8 && week <= 20) {
+    if (week >= 8 && week <= 12) {
       phases.push({
-        week: '8-20',
-        title: 'Active Intervention & Continuous Monitoring',
-        status: week >= 20 ? 'completed' : 'in-progress',
+        week: '8-12',
+        title: 'Week 8-12: Breakthrough Moment',
+        status: week >= 12 ? 'completed' : 'in-progress',
         icon: TrendingUp,
         color: 'from-orange-500 to-orange-600',
-        description: 'Weekly check-ins and active intervention implementation with continuous team support.',
+        description: 'Major health improvements and lifestyle transformation.',
         activities: [
-          'Weekly check-in by the concierge or wellness officer to remove blockers / followup',
-          'Push member where needed to drive outcomes',
-          'The member tries out the interventions suggested by the Elyx team',
-          'Fortnightly calls by the medical team to check in on the member\'s medical records',
-          'Continuous plan adjustments based on real-time feedback and results',
-          'Proactive member support to drive optimal health outcomes'
+          'Advanced cardiovascular training',
+          'Personalized nutrition optimization',
+          'Stress resilience building',
+          'Mid-journey comprehensive review'
         ],
-        teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Neal (Concierge Lead)'],
-        insights: 'This active phase focuses on implementation and real-time optimization. Your dedicated team provides continuous support to ensure you achieve your health goals efficiently.',
-        detailedDescription: 'Weeks 8-20 represent the active intervention phase where you implement the personalized strategies developed by your Elyx team. You receive weekly check-ins from your concierge or wellness officer to remove any blockers and ensure smooth progress. The team proactively pushes and supports you to drive the best possible outcomes, with fortnightly medical reviews to track your progress and make necessary adjustments.'
+        teamInvolved: ['Full Elyx Team', 'Dr. Warren', 'Neal (Concierge Lead)'],
+        insights: 'Significant health improvements validate the personalized approach and motivate continued progress.',
+        detailedDescription: 'The 12-week mark brings remarkable results. Arun\'s cholesterol drops significantly, his resting heart rate improves, and he feels the best he has in years.',
+        conversations: [
+          {
+            speaker: 'Dr. Warren',
+            message: 'Your latest results are outstanding. LDL cholesterol down 15%, resting heart rate decreased by 16 bpm.',
+            alignment: 'left'
+          },
+          {
+            speaker: 'Arun',
+            message: 'I can\'t believe these numbers. I feel like I\'ve gained 10 years of my life back.',
+            alignment: 'right'
+          },
+          {
+            speaker: 'Neal',
+            message: 'This is just the beginning. We\'re building a foundation for lifelong health.',
+            alignment: 'left'
+          }
+        ],
+        keyMetrics: [
+          { metric: 'LDL Cholesterol', value: '-15%', status: 'excellent' },
+          { metric: 'Resting Heart Rate', value: '-16 bpm', status: 'excellent' },
+          { metric: 'Overall Energy', value: '+40%', status: 'excellent' }
+        ]
       });
     }
 
     if (week >= 12) {
       phases.push({
         week: '12+',
-        title: 'Progress Review & Strategic Planning',
+        title: 'Week 12+: The New You',
         status: 'in-progress',
         icon: MessageSquare,
         color: 'from-pink-500 to-pink-600',
-        description: 'Comprehensive progress assessment and strategic planning for continued optimization.',
+        description: 'Sustained transformation and planning for the future.',
         activities: [
-          'At the end of week 12, the member goes for tests again to review the progress being made',
-          'The physician reviews the results and plans with the other people in the Elyx team for next steps for the member\'s journey',
-          'Comprehensive testing at week 12 to review progress made',
-          'Strategic planning session for continued health optimization',
-          'Plan refinements based on achieved outcomes and new goals',
-          'Long-term health strategy development and milestone setting'
+          'Long-term health strategy development',
+          'Advanced optimization protocols',
+          'Family health planning discussions',
+          'Celebration of achievements'
         ],
-        teamInvolved: ['Full Elyx Team', 'Dr. Warren (Medical Strategist)', 'Neal (Concierge Lead)'],
-        insights: 'At the 12-week mark, we conduct a comprehensive review to celebrate your progress and strategically plan the next phase of your health journey.',
-        detailedDescription: 'At the end of week 12, you undergo comprehensive testing again to review the progress being made. The physician reviews these results and collaborates with the entire Elyx team to plan the next steps for your health journey. This marks a crucial milestone where we assess achievements, identify new opportunities, and set the strategic direction for continued optimization.'
+        teamInvolved: ['Full Elyx Team'],
+        insights: 'The transformation is complete, but the journey continues with advanced optimization and family health planning.',
+        detailedDescription: 'Six months later, Arun and his 12-year-old son embark on a challenging trek in the Himalayas - something he never thought possible before starting his health journey.',
+        conversations: [
+          {
+            speaker: 'Arun',
+            message: 'You didn\'t just give me a plan; you gave me back my future. I\'m hiking with my son in the Himalayas!',
+            alignment: 'right'
+          },
+          {
+            speaker: 'Ruby',
+            message: 'Seeing you achieve your goals and create these memories with your family - this is why we do what we do.',
+            alignment: 'left'
+          }
+        ],
+        finalImage: {
+          description: 'A picture of Mr. Sharma and his son hiking in the mountains, both smiling and healthy.',
+          quote: 'You didn\'t just give me a plan; you gave me back my future.'
+        }
       });
     }
 
@@ -129,13 +218,11 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     return getJourneyPhases(week).filter(phase => {
       const weekRange = phase.week.split('-');
       if (weekRange.length === 1) {
-        // Single week like "1" or "12+"
         if (phase.week.includes('+')) {
           return week >= parseInt(phase.week.replace('+', ''));
         }
         return week === parseInt(phase.week);
       } else {
-        // Range like "2-4" or "8-20"
         const startWeek = parseInt(weekRange[0]);
         const endWeek = parseInt(weekRange[1]);
         return week >= startWeek && week <= endWeek;
@@ -146,17 +233,17 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
   const currentPhases = getCurrentPhases(currentWeek);
 
   const getPhaseTitle = (week: number) => {
-    if (week === 1) return 'Week 1: Getting Started';
-    if (week >= 2 && week <= 4) return 'Weeks 2-4: Assessment Phase';
-    if (week >= 4 && week <= 8) return 'Weeks 4-8: Plan Development';
-    if (week >= 8 && week <= 12) return 'Weeks 8-12: Active Intervention';
-    if (week >= 12) return 'Week 12+: Progress Review';
+    if (week === 1) return 'Week 1: The Wake-Up Call';
+    if (week >= 2 && week <= 4) return 'Weeks 2-4: Building Momentum';
+    if (week >= 4 && week <= 8) return 'Weeks 4-8: Finding Rhythm';
+    if (week >= 8 && week <= 12) return 'Weeks 8-12: Breakthrough Moment';
+    if (week >= 12) return 'Week 12+: The New You';
     return `Week ${week}`;
   };
 
   return (
     <div className="space-y-8">
-      {/* Running Man Emoji and Timeline Progress Bar */}
+      {/* Progress Bar with Running Man */}
       <div className="relative">
         <div className="flex items-center justify-between mb-8">
           <div className="text-lg font-semibold text-gray-800">Week {currentWeek} of your journey</div>
@@ -176,7 +263,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
           </div>
         </div>
         
-        {/* Running Man Emoji positioned above the progress bar */}
         <div className="relative mb-4">
           <div className="text-4xl absolute top-0 transition-all duration-500 ease-out" 
                style={{ left: `calc(${(currentWeek / 20) * 100}% - 24px)` }}>
@@ -202,14 +288,11 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
           currentPhases.map((phase, index) => {
             const Icon = phase.icon;
             const isExpanded = selectedPhase === index;
-            const isActive = true; // All shown phases are active for current week
 
             return (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ${
-                  isActive ? 'border-blue-200' : 'border-gray-100'
-                } ${isExpanded ? 'shadow-2xl' : 'hover:shadow-xl'}`}
+                className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] border-blue-200 ${isExpanded ? 'shadow-2xl' : 'hover:shadow-xl'}`}
                 onClick={() => setSelectedPhase(isExpanded ? null : index)}
               >
                 <div className="p-6">
@@ -249,6 +332,72 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
                   {isExpanded && (
                     <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
+                      {/* Conversations */}
+                      {phase.conversations && (
+                        <div className="bg-gray-50 rounded-xl p-6">
+                          <h4 className="font-semibold text-gray-800 mb-4 flex items-center">
+                            <MessageSquare className="mr-2" size={18} />
+                            Team Conversations
+                          </h4>
+                          <div className="space-y-4">
+                            {phase.conversations.map((conv, idx) => (
+                              <div key={idx} className={`flex ${conv.alignment === 'right' ? 'justify-end' : 'justify-start'}`}>
+                                <div className={`max-w-xs px-4 py-3 rounded-2xl ${
+                                  conv.alignment === 'right' 
+                                    ? 'bg-blue-500 text-white' 
+                                    : 'bg-white border border-gray-200 text-gray-800'
+                                }`}>
+                                  <div className="font-medium text-sm mb-1">{conv.speaker}</div>
+                                  <div className="text-sm">{conv.message}</div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Key Metrics */}
+                      {phase.keyMetrics && (
+                        <div className="bg-blue-50 rounded-xl p-6">
+                          <h4 className="font-semibold text-blue-800 mb-4 flex items-center">
+                            <Activity className="mr-2" size={18} />
+                            Key Health Improvements
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {phase.keyMetrics.map((metric, idx) => (
+                              <div key={idx} className="bg-white rounded-lg p-4 text-center">
+                                <div className="font-bold text-lg text-gray-800">{metric.value}</div>
+                                <div className="text-sm text-gray-600">{metric.metric}</div>
+                                <div className={`text-xs mt-1 px-2 py-1 rounded-full ${
+                                  metric.status === 'excellent' ? 'bg-green-100 text-green-800' :
+                                  metric.status === 'improved' ? 'bg-blue-100 text-blue-800' :
+                                  metric.status === 'improving' ? 'bg-yellow-100 text-yellow-800' :
+                                  'bg-red-100 text-red-800'
+                                }`}>
+                                  {metric.status}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Final Success Image */}
+                      {phase.finalImage && (
+                        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 text-center">
+                          <div className="mb-6">
+                            <div className="w-32 h-32 mx-auto bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl mb-4">
+                              🏔️
+                            </div>
+                            <p className="text-gray-600 mb-4">{phase.finalImage.description}</p>
+                          </div>
+                          <blockquote className="text-2xl font-bold text-gray-800 italic">
+                            "{phase.finalImage.quote}"
+                          </blockquote>
+                          <p className="text-gray-600 mt-2">- Arun Sharma</p>
+                        </div>
+                      )}
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="font-semibold text-gray-800 mb-3">Key Activities</h4>
@@ -299,8 +448,8 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
       {/* Week Navigation Helper */}
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 text-center">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Explore Your Journey</h3>
-        <p className="text-gray-600 mb-4">Use the week navigation above to see how your health journey unfolds over time</p>
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">Explore Arun's Journey</h3>
+        <p className="text-gray-600 mb-4">Follow the complete transformation story week by week</p>
         <div className="flex justify-center space-x-2">
           <button
             onClick={() => setCurrentWeek(1)}

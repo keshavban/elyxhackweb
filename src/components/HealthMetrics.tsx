@@ -26,6 +26,15 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       trend: 'up'
     },
     {
+      name: 'Stress Level',
+      current: Math.max(25, 85 - (currentWeek * 4)),
+      previous: Math.max(28, 88 - ((currentWeek - 1) * 4)),
+      unit: '%',
+      icon: Activity,
+      color: 'from-red-400 to-orange-500',
+      trend: 'down'
+    },
+    {
       name: 'Cardiovascular Health',
       current: Math.min(88, 70 + (currentWeek * 1.5)),
       previous: Math.min(86, 68 + ((currentWeek - 1) * 1.5)),
@@ -64,6 +73,16 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
   ];
 
   const overallScore = Math.round(metrics.reduce((acc, metric) => acc + metric.current, 0) / metrics.length);
+
+  // Special handling for stress level gauge
+  const stressMetric = metrics.find(m => m.name === 'Stress Level');
+  const getStressZone = (level: number) => {
+    if (level <= 30) return { zone: 'Low', color: 'text-green-600', bgColor: 'bg-green-100', description: 'Calm and relaxed' };
+    if (level <= 60) return { zone: 'Moderate', color: 'text-yellow-600', bgColor: 'bg-yellow-100', description: 'Some stress detected' };
+    return { zone: 'High', color: 'text-red-600', bgColor: 'bg-red-100', description: 'Significant stress detected' };
+  };
+
+  const stressZone = stressMetric ? getStressZone(stressMetric.current) : null;
 
   return (
     <div className="space-y-8">
@@ -120,6 +139,72 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
           {overallScore >= 85 ? 'Excellent progress!' : overallScore >= 70 ? 'Good improvement!' : 'Keep building momentum!'}
         </p>
       </div>
+
+      {/* Stress Level Gauge */}
+      {stressMetric && stressZone && (
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Real-Time Stress Monitor</h2>
+          <div className="flex items-center justify-center">
+            <div className="relative w-64 h-32">
+              <svg className="w-full h-full" viewBox="0 0 200 100">
+                {/* Background arc */}
+                <path
+                  d="M 20 80 A 80 80 0 0 1 180 80"
+                  stroke="#e5e7eb"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                {/* Green zone */}
+                <path
+                  d="M 20 80 A 80 80 0 0 1 73.2 20"
+                  stroke="#10b981"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                {/* Yellow zone */}
+                <path
+                  d="M 73.2 20 A 80 80 0 0 1 126.8 20"
+                  stroke="#f59e0b"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                {/* Red zone */}
+                <path
+                  d="M 126.8 20 A 80 80 0 0 1 180 80"
+                  stroke="#ef4444"
+                  strokeWidth="12"
+                  fill="none"
+                />
+                {/* Needle */}
+                <g transform={`rotate(${(stressMetric.current / 100) * 160 - 80} 100 80)`}>
+                  <line
+                    x1="100"
+                    y1="80"
+                    x2="100"
+                    y2="25"
+                    stroke="#374151"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="100" cy="80" r="6" fill="#374151" />
+                </g>
+              </svg>
+              <div className="absolute bottom-0 left-0 right-0 text-center">
+                <div className={`inline-flex items-center px-4 py-2 rounded-full ${stressZone.bgColor} ${stressZone.color} font-semibold`}>
+                  <span className="text-lg mr-2">{Math.round(stressMetric.current)}%</span>
+                  <span>{stressZone.zone}</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-2">{stressZone.description}</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between text-xs text-gray-500 mt-4">
+            <span>Low (0-30%)</span>
+            <span>Moderate (30-60%)</span>
+            <span>High (60-100%)</span>
+          </div>
+        </div>
+      )}
 
       {/* Individual Metrics */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

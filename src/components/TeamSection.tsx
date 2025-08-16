@@ -9,7 +9,7 @@ const TeamSection: React.FC = () => {
       id: 'ruby',
       name: 'Ruby',
       role: 'The Concierge / Orchestrator',
-      avatar: 'RU',
+      avatar: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-pink-500 to-pink-600',
       icon: UserCheck,
       expertise: 'Logistics & Coordination Master',
@@ -31,7 +31,7 @@ const TeamSection: React.FC = () => {
       id: 'warren',
       name: 'Dr. Warren',
       role: 'The Medical Strategist',
-      avatar: 'DW',
+      avatar: 'https://images.pexels.com/photos/5327921/pexels-photo-5327921.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-blue-500 to-blue-600',
       icon: Stethoscope,
       expertise: 'Clinical Authority & Medical Direction',
@@ -53,7 +53,7 @@ const TeamSection: React.FC = () => {
       id: 'advik',
       name: 'Advik',
       role: 'The Performance Scientist',
-      avatar: 'AD',
+      avatar: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-purple-500 to-purple-600',
       icon: Brain,
       expertise: 'Data Analysis & Optimization',
@@ -75,7 +75,7 @@ const TeamSection: React.FC = () => {
       id: 'carla',
       name: 'Carla',
       role: 'The Nutritionist',
-      avatar: 'CA',
+      avatar: 'https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-green-500 to-green-600',
       icon: Utensils,
       expertise: 'Fuel Pillar & Nutrition Strategy',
@@ -97,7 +97,7 @@ const TeamSection: React.FC = () => {
       id: 'rachel',
       name: 'Rachel',
       role: 'The PT / Physiotherapist',
-      avatar: 'RA',
+      avatar: 'https://images.pexels.com/photos/3768593/pexels-photo-3768593.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-orange-500 to-orange-600',
       icon: Dumbbell,
       expertise: 'Chassis & Physical Optimization',
@@ -119,7 +119,7 @@ const TeamSection: React.FC = () => {
       id: 'neal',
       name: 'Neal',
       role: 'The Concierge Lead / Relationship Manager',
-      avatar: 'NE',
+      avatar: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400',
       color: 'from-indigo-500 to-indigo-600',
       icon: Users,
       expertise: 'Strategic Leadership & Client Relations',
@@ -164,8 +164,12 @@ const TeamSection: React.FC = () => {
               onClick={() => setSelectedMember(selectedMember === member.id ? null : member.id)}
             >
               <div className="text-center">
-                <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${member.color} flex items-center justify-center text-white text-xl font-bold mx-auto mb-4`}>
-                  {member.avatar}
+                <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+                  <img 
+                    src={member.avatar} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
                 <h3 className="font-bold text-gray-800 text-lg mb-1">{member.name}</h3>
@@ -194,8 +198,12 @@ const TeamSection: React.FC = () => {
         <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-200 animate-in slide-in-from-bottom duration-500">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className={`w-32 h-32 rounded-full bg-gradient-to-r ${selectedMemberData.color} flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4`}>
-                {selectedMemberData.avatar}
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
+                <img 
+                  src={selectedMemberData.avatar} 
+                  alt={selectedMemberData.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">{selectedMemberData.name}</h2>
               <p className="text-gray-600 mb-4">{selectedMemberData.role}</p>
