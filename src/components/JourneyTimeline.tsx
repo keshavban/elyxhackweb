@@ -12,16 +12,17 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
   const getJourneyPhases = (week: number) => {
     const phases = [];
     
-    if (week >= 1) {
+    if (week >= 1 && week <= 1) {
       phases.push({
         week: '1',
         title: 'Welcome & Discovery - Member Onboarding',
         status: 'completed',
         icon: User,
         color: 'from-blue-500 to-blue-600',
-        description: 'Complete member onboarding and comprehensive health assessment',
+        description: 'This is member onboarding where you share your medical history, priorities, and dietary preferences with our expert team.',
         activities: [
-          'Member shares detailed medical history with the Elyx team',
+          'The member shares medical history, priorities, diets that they follow, and have test discussions with the Elyx team',
+          'Complete member onboarding and comprehensive health assessment',
           'Discussion of health priorities and personal wellness goals',
           'Review of current dietary habits and lifestyle patterns',
           'Initial test discussions and health baseline establishment',
@@ -33,16 +34,17 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       });
     }
 
-    if (week >= 2) {
+    if (week >= 2 && week <= 4) {
       phases.push({
         week: '2-4',
         title: 'Comprehensive Health Assessment & Testing',
         status: 'completed',
         icon: FlaskConical,
         color: 'from-green-500 to-green-600',
-        description: 'Complete biological sample collection and comprehensive test scan suite',
+        description: 'Elyx collects biological samples and puts you through our complete test scan suite.',
         activities: [
-          'Elyx collects comprehensive biological samples for analysis',
+          'Elyx collects biological samples/have them go through test scan suite',
+          'The physical exam of the member is done',
           'Complete test scan suite including advanced biomarker panels',
           'Thorough physical examination conducted by medical team',
           'Body composition analysis and metabolic assessment',
@@ -54,20 +56,21 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       });
     }
 
-    if (week >= 4) {
+    if (week >= 4 && week <= 8) {
       phases.push({
         week: '4-8',
         title: 'Results Analysis & Personalized Plan Development',
         status: week >= 8 ? 'completed' : 'in-progress',
         icon: Stethoscope,
         color: 'from-purple-500 to-purple-600',
-        description: 'Test results categorization and comprehensive intervention strategy creation',
+        description: 'Test results are shared with the member intermittently and categorized into action buckets.',
         activities: [
-          'Test results shared intermittently and categorized into action buckets',
-          'Results organized into: "major issues", "need followup", and "all okay" categories',
-          'Different Elyx team members discuss results and implications',
-          'Member commitment obtained for lifestyle interventions and changes',
-          'Personalized nutrition, exercise, and supplement protocols developed'
+          'Test results are shared with the member intermittently. Tests results are categorized into three buckets: "major issues", "need followup", "all okay"',
+          'Different people in the Elyx team talk to the member and discuss the results',
+          'Get member\'s commitment on what interventions (lifestyle changes they want to make)',
+          'Results organized into comprehensive action categories',
+          'Personalized nutrition, exercise, and supplement protocols developed',
+          'Member commitment obtained for lifestyle interventions and changes'
         ],
         teamInvolved: ['Dr. Warren (Medical Strategist)', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Advik (Performance Scientist)'],
         insights: 'Your test results reveal unique patterns that inform a completely personalized approach. Each recommendation is backed by your specific biomarkers and health profile.',
@@ -75,20 +78,21 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       });
     }
 
-    if (week >= 8) {
+    if (week >= 8 && week <= 20) {
       phases.push({
         week: '8-20',
         title: 'Active Intervention & Continuous Monitoring',
         status: week >= 20 ? 'completed' : 'in-progress',
         icon: TrendingUp,
         color: 'from-orange-500 to-orange-600',
-        description: 'Implementation of personalized interventions with ongoing support and optimization',
+        description: 'Weekly check-ins and active intervention implementation with continuous team support.',
         activities: [
-          'Weekly check-ins by concierge or wellness officer to remove blockers',
-          'Proactive member support to drive optimal health outcomes',
-          'Member implements interventions suggested by the Elyx team',
-          'Fortnightly medical team calls to review progress and medical records',
-          'Continuous plan adjustments based on real-time feedback and results'
+          'Weekly check-in by the concierge or wellness officer to remove blockers / followup',
+          'Push member where needed to drive outcomes',
+          'The member tries out the interventions suggested by the Elyx team',
+          'Fortnightly calls by the medical team to check in on the member\'s medical records',
+          'Continuous plan adjustments based on real-time feedback and results',
+          'Proactive member support to drive optimal health outcomes'
         ],
         teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Neal (Concierge Lead)'],
         insights: 'This active phase focuses on implementation and real-time optimization. Your dedicated team provides continuous support to ensure you achieve your health goals efficiently.',
@@ -103,10 +107,11 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         status: 'in-progress',
         icon: MessageSquare,
         color: 'from-pink-500 to-pink-600',
-        description: 'Comprehensive progress assessment and future journey planning',
+        description: 'Comprehensive progress assessment and strategic planning for continued optimization.',
         activities: [
+          'At the end of week 12, the member goes for tests again to review the progress being made',
+          'The physician reviews the results and plans with the other people in the Elyx team for next steps for the member\'s journey',
           'Comprehensive testing at week 12 to review progress made',
-          'Physician reviews results with entire Elyx team for next steps',
           'Strategic planning session for continued health optimization',
           'Plan refinements based on achieved outcomes and new goals',
           'Long-term health strategy development and milestone setting'
@@ -120,11 +125,38 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     return phases;
   };
 
-  const currentPhases = getJourneyPhases(currentWeek);
+  const getCurrentPhases = (week: number) => {
+    return getJourneyPhases(week).filter(phase => {
+      const weekRange = phase.week.split('-');
+      if (weekRange.length === 1) {
+        // Single week like "1" or "12+"
+        if (phase.week.includes('+')) {
+          return week >= parseInt(phase.week.replace('+', ''));
+        }
+        return week === parseInt(phase.week);
+      } else {
+        // Range like "2-4" or "8-20"
+        const startWeek = parseInt(weekRange[0]);
+        const endWeek = parseInt(weekRange[1]);
+        return week >= startWeek && week <= endWeek;
+      }
+    });
+  };
+
+  const currentPhases = getCurrentPhases(currentWeek);
+
+  const getPhaseTitle = (week: number) => {
+    if (week === 1) return 'Week 1: Getting Started';
+    if (week >= 2 && week <= 4) return 'Weeks 2-4: Assessment Phase';
+    if (week >= 4 && week <= 8) return 'Weeks 4-8: Plan Development';
+    if (week >= 8 && week <= 12) return 'Weeks 8-12: Active Intervention';
+    if (week >= 12) return 'Week 12+: Progress Review';
+    return `Week ${week}`;
+  };
 
   return (
     <div className="space-y-8">
-      {/* Timeline Progress Bar */}
+      {/* Running Man Emoji and Timeline Progress Bar */}
       <div className="relative">
         <div className="flex items-center justify-between mb-8">
           <div className="text-lg font-semibold text-gray-800">Week {currentWeek} of your journey</div>
@@ -144,7 +176,15 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
           </div>
         </div>
         
-        <div className="w-full bg-gray-200 rounded-full h-3 mb-12">
+        {/* Running Man Emoji positioned above the progress bar */}
+        <div className="relative mb-4">
+          <div className="text-4xl absolute top-0 transition-all duration-500 ease-out" 
+               style={{ left: `calc(${(currentWeek / 20) * 100}% - 24px)` }}>
+            🏃‍♂️
+          </div>
+        </div>
+        
+        <div className="w-full bg-gray-200 rounded-full h-3 mb-12 mt-12">
           <div 
             className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${(currentWeek / 20) * 100}%` }}
@@ -155,98 +195,106 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       {/* Current Week's Journey Phases */}
       <div className="space-y-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          {currentWeek === 1 ? 'Week 1: Getting Started' : 
-           currentWeek <= 4 ? `Weeks 2-4: Assessment Phase` :
-           currentWeek <= 8 ? `Weeks 4-8: Plan Development` :
-           currentWeek <= 12 ? `Weeks 8-12: Active Intervention` :
-           'Week 12+: Progress Review'}
+          {getPhaseTitle(currentWeek)}
         </h2>
         
-        {currentPhases.map((phase, index) => {
-          const Icon = phase.icon;
-          const isExpanded = selectedPhase === index;
-          const isActive = true; // All shown phases are active for current week
+        {currentPhases.length > 0 ? (
+          currentPhases.map((phase, index) => {
+            const Icon = phase.icon;
+            const isExpanded = selectedPhase === index;
+            const isActive = true; // All shown phases are active for current week
 
-          return (
-            <div
-              key={index}
-              className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ${
-                isActive ? 'border-blue-200' : 'border-gray-100'
-              } ${isExpanded ? 'shadow-2xl' : 'hover:shadow-xl'}`}
-              onClick={() => setSelectedPhase(isExpanded ? null : index)}
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${phase.color} text-white`}>
-                      <Icon size={24} />
-                    </div>
-                    <div>
-                      <div className="flex items-center space-x-3">
-                        <h3 className="text-xl font-bold text-gray-800">{phase.title}</h3>
-                        <span className="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-600">
-                          Week {phase.week}
-                        </span>
+            return (
+              <div
+                key={index}
+                className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ${
+                  isActive ? 'border-blue-200' : 'border-gray-100'
+                } ${isExpanded ? 'shadow-2xl' : 'hover:shadow-xl'}`}
+                onClick={() => setSelectedPhase(isExpanded ? null : index)}
+              >
+                <div className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${phase.color} text-white`}>
+                        <Icon size={24} />
                       </div>
-                      <p className="text-gray-600 mt-1">{phase.description}</p>
-                      <p className="text-gray-700 mt-2 text-sm leading-relaxed">{phase.detailedDescription}</p>
+                      <div>
+                        <div className="flex items-center space-x-3">
+                          <h3 className="text-xl font-bold text-gray-800">{phase.title}</h3>
+                          <span className="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-600">
+                            Week {phase.week}
+                          </span>
+                        </div>
+                        <p className="text-gray-600 mt-1">{phase.description}</p>
+                        <p className="text-gray-700 mt-2 text-sm leading-relaxed">{phase.detailedDescription}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                        phase.status === 'completed' 
+                          ? 'bg-green-500 text-white' 
+                          : phase.status === 'in-progress'
+                          ? 'bg-orange-500 text-white'
+                          : 'bg-gray-300 text-gray-600'
+                      }`}>
+                        {phase.status === 'completed' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                      </div>
+                      <ArrowRight 
+                        className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} 
+                        size={20} 
+                      />
                     </div>
                   </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                      phase.status === 'completed' 
-                        ? 'bg-green-500 text-white' 
-                        : phase.status === 'in-progress'
-                        ? 'bg-orange-500 text-white'
-                        : 'bg-gray-300 text-gray-600'
-                    }`}>
-                      {phase.status === 'completed' ? <CheckCircle size={16} /> : <Clock size={16} />}
-                    </div>
-                    <ArrowRight 
-                      className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} 
-                      size={20} 
-                    />
-                  </div>
-                </div>
 
-                {isExpanded && (
-                  <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Key Activities</h4>
-                        <ul className="space-y-2">
-                          {phase.activities.map((activity, idx) => (
-                            <li key={idx} className="flex items-start space-x-2 text-gray-600">
-                              <CheckCircle size={16} className="text-green-500 mt-1 flex-shrink-0" />
-                              <span className="text-sm">{activity}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Team Members Involved</h4>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {phase.teamInvolved.map((member, idx) => (
-                            <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                              {member}
-                            </span>
-                          ))}
+                  {isExpanded && (
+                    <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="font-semibold text-gray-800 mb-3">Key Activities</h4>
+                          <ul className="space-y-2">
+                            {phase.activities.map((activity, idx) => (
+                              <li key={idx} className="flex items-start space-x-2 text-gray-600">
+                                <CheckCircle size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                                <span className="text-sm">{activity}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                         
-                        <h4 className="font-semibold text-gray-800 mb-2">Phase Insights</h4>
-                        <p className="text-gray-600 italic bg-gray-50 p-3 rounded-lg text-sm leading-relaxed">
-                          {phase.insights}
-                        </p>
+                        <div>
+                          <h4 className="font-semibold text-gray-800 mb-3">Team Members Involved</h4>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {phase.teamInvolved.map((member, idx) => (
+                              <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                {member}
+                              </span>
+                            ))}
+                          </div>
+                          
+                          <h4 className="font-semibold text-gray-800 mb-2">Phase Insights</h4>
+                          <p className="text-gray-600 italic bg-gray-50 p-3 rounded-lg text-sm leading-relaxed">
+                            {phase.insights}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
+            );
+          })
+        ) : (
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
+            <div className="text-gray-400 mb-4">
+              <Clock size={48} className="mx-auto" />
             </div>
-          );
-        })}
+            <h3 className="text-xl font-bold text-gray-600 mb-2">Journey Phase Coming Soon</h3>
+            <p className="text-gray-500">
+              This phase of your health journey will be available as you progress through your program.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Week Navigation Helper */}
