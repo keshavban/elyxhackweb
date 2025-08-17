@@ -266,7 +266,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         <div className="relative mb-4">
           <div className="text-4xl absolute top-0 transition-all duration-500 ease-out" 
                style={{ left: `calc(${(currentWeek / 20) * 100}% - 24px)` }}>
-            🏃‍♂️
+            🏃‍♀️
           </div>
         </div>
         
