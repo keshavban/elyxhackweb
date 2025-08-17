@@ -8,6 +8,7 @@ interface JourneyTimelineProps {
 
 const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurrentWeek }) => {
   const [selectedPhase, setSelectedPhase] = useState<number | null>(null);
+  const TOTAL_WEEKS = 32; // Set the total journey duration
 
   const getJourneyPhases = (week: number) => {
     const phases = [];
@@ -267,6 +268,26 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     return phases;
   };
 
+  const getHealthStats = (week: number) => {
+    const progressScore = Math.round((week / TOTAL_WEEKS) * 100);
+    let keyMilestones = 0;
+    if (week >= 1) keyMilestones++;
+    if (week >= 4) keyMilestones++;
+    if (week >= 8) keyMilestones++;
+    if (week >= 12) keyMilestones++;
+    if (week >= 16) keyMilestones++;
+    if (week >= 24) keyMilestones++;
+    if (week >= 32) keyMilestones++;
+
+    return {
+      weeksCompleted: week,
+      progressScore: progressScore,
+      keyMilestones: keyMilestones
+    };
+  };
+
+  const healthStats = getHealthStats(currentWeek);
+
   const getCurrentPhases = (week: number) => {
     return getJourneyPhases(week).filter(phase => {
       const weekRange = phase.week.split('-');
@@ -298,7 +319,23 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
   return (
     <div className="space-y-8">
-      {/* Progress Bar with Running Man */}
+      {/* Health Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <p className="text-3xl font-bold text-blue-600">{healthStats.weeksCompleted}</p>
+          <p className="text-sm text-gray-500">Weeks Completed</p>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <p className="text-3xl font-bold text-green-600">{healthStats.progressScore}%</p>
+          <p className="text-sm text-gray-500">Progress Score</p>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <p className="text-3xl font-bold text-blue-600">{healthStats.keyMilestones}</p>
+          <p className="text-sm text-gray-500">Key Milestones</p>
+        </div>
+      </div>
+
+      {/* Progress Bar */}
       <div className="relative">
         <div className="flex items-center justify-between mb-8">
           <div className="text-lg font-semibold text-gray-800">Week {currentWeek} of your journey</div>
@@ -310,7 +347,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
               Previous Week
             </button>
             <button
-              onClick={() => setCurrentWeek(Math.min(20, currentWeek + 1))}
+              onClick={() => setCurrentWeek(Math.min(TOTAL_WEEKS, currentWeek + 1))}
               className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all"
             >
               Next Week
@@ -318,13 +355,10 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
           </div>
         </div>
         
-        <div className="relative mb-4">
-        </div>
-        
-        <div className="w-full bg-gray-200 rounded-full h-3 mb-12 mt-12">
+        <div className="w-full bg-gray-200 rounded-full h-3">
           <div 
             className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
-            style={{ width: `${(currentWeek / 20) * 100}%` }}
+            style={{ width: `${(currentWeek / TOTAL_WEEKS) * 100}%` }}
           ></div>
         </div>
       </div>
@@ -415,7 +449,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
                               <div key={idx} className="bg-white rounded-lg p-4 text-center">
                                 <div className="font-bold text-lg text-gray-800">{metric.value}</div>
                                 <div className="text-sm text-gray-600">{metric.metric}</div>
-                                <div className={`text-xs mt-1 px-2 py-1 rounded-full ${
+                                <div className={`text-xs mt-1 px-2 py-1 rounded-full inline-block ${
                                   metric.status === 'excellent' ? 'bg-green-100 text-green-800' :
                                   metric.status === 'improved' ? 'bg-blue-100 text-blue-800' :
                                   metric.status === 'improving' ? 'bg-yellow-100 text-yellow-800' :
@@ -522,10 +556,34 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
           >
             Week 28
           </button>
+          <button
+            onClick={() => setCurrentWeek(32)}
+            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+          >
+            Week 32
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default JourneyTimeline;
+// Main App component to render the timeline
+const App = () => {
+  const [currentWeek, setCurrentWeek] = useState(1);
+
+  return (
+    <div className="bg-gray-50 min-h-screen p-4 sm:p-6 md:p-8 font-sans">
+      <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight">Mr. Sharma's Health Transformation</h1>
+            <p className="mt-3 text-lg text-gray-600">A week-by-week look at a journey to optimal well-being.</p>
+        </header>
+        <JourneyTimeline currentWeek={currentWeek} setCurrentWeek={setCurrentWeek} />
+      </div>
+    </div>
+  );
+};
+
+
+export default App;
