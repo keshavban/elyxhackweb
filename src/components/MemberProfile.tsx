@@ -15,7 +15,7 @@ const MemberProfile: React.FC = () => {
 
   const memberData = {
     snapshot: {
-      preferredName: 'Rohan Patel',
+      preferredName: 'Arun Sharma',
       dateOfBirth: '12 March 1985, 40, Male',
       residence: 'Primary residence is Singapore, frequently travels to Kuala Lumpur, Delhi, Bangkok, and Tokyo',
       occupation: 'Consultant at BCG firm with high-stress role involving frequent international travel, client meetings, and demanding projects',
