@@ -347,16 +347,10 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         <p className="text-gray-600 mb-4">Follow the complete transformation story week by week</p>
         <div className="flex justify-center space-x-2">
           <button
-            onClick={() => setCurrentWeek(1)}
+            onClick={() => setCurrentWeek(2)}
             className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
-            Week 1
-          </button>
-          <button
-            onClick={() => setCurrentWeek(4)}
-            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
-          >
-            Week 4
+            Week 2
           </button>
           <button
             onClick={() => setCurrentWeek(8)}
@@ -365,10 +359,16 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
             Week 8
           </button>
           <button
-            onClick={() => setCurrentWeek(12)}
+            onClick={() => setCurrentWeek(16)}
             className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
-            Week 12
+            Week 16
+          </button>
+          <button
+            onClick={() => setCurrentWeek(24)}
+            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+          >
+            Week 24
           </button>
         </div>
       </div>
