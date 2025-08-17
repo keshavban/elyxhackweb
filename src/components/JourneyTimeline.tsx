@@ -28,7 +28,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)'],
         insights: 'This foundational week establishes your health baseline and creates the personalized framework for your entire journey.',
-        detailedDescription: 'Mr. Arun Sharma, a 45-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.',
+        detailedDescription: 'Mr. Arun Sharma, a 40-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.',
         conversations: [
           {
             speaker: 'Dr. Warren',
