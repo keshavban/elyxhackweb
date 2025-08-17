@@ -1,9 +1,11 @@
 import React from 'react';
-import { Heart, Bell, Settings, Calendar } from 'lucide-react';
+import { Heart, Bell, Settings, Calendar, Brain } from 'lucide-react';
 import TodaysPlan from './TodaysPlan';
+import AIHealthPredictor from './AIHealthPredictor';
 
 const Header: React.FC = () => {
   const [showTodaysPlan, setShowTodaysPlan] = React.useState(false);
+  const [showAIPredictor, setShowAIPredictor] = React.useState(false);
 
   return (
     <>
@@ -36,6 +38,13 @@ const Header: React.FC = () => {
                   <Calendar size={18} />
                   <span className="font-medium">Today</span>
                 </button>
+                <button 
+                  onClick={() => setShowAIPredictor(true)}
+                  className="flex items-center space-x-2 px-3 py-2 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-lg hover:shadow-lg transition-all"
+                >
+                  <Brain size={18} />
+                  <span className="font-medium">AI Health Predictor</span>
+                </button>
                 <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
                   <Bell size={20} />
                 </button>
@@ -55,6 +64,11 @@ const Header: React.FC = () => {
       {/* Today's Plan Modal */}
       {showTodaysPlan && (
         <TodaysPlan onClose={() => setShowTodaysPlan(false)} />
+      )}
+      
+      {/* AI Health Predictor Modal */}
+      {showAIPredictor && (
+        <AIHealthPredictor onClose={() => setShowAIPredictor(false)} />
       )}
     </>
   );
