@@ -20,7 +20,7 @@ const MemberProfile: React.FC = () => {
       residence: 'Primary residence is Singapore, frequently travels to Kuala Lumpur, Delhi, Bangkok, and Tokyo',
       occupation: 'Consultant at BCG firm with high-stress role involving frequent international travel, client meetings, and demanding projects',
       personalAssistant: 'Priya Singh',
-      profileImage: 'RP'
+      profileImage: 'AS'
     },
     outcomes: {
       goals: [
