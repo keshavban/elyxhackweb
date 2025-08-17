@@ -572,17 +572,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 const App = () => {
   const [currentWeek, setCurrentWeek] = useState(1);
 
-  return (
-    <div className="bg-gray-50 min-h-screen p-4 sm:p-6 md:p-8 font-sans">
-      <div className="max-w-4xl mx-auto">
-        <header className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight">Mr. Sharma's Health Transformation</h1>
-            <p className="mt-3 text-lg text-gray-600">A week-by-week look at a journey to optimal well-being.</p>
-        </header>
-        <JourneyTimeline currentWeek={currentWeek} setCurrentWeek={setCurrentWeek} />
-      </div>
-    </div>
-  );
+
 };
 
 
