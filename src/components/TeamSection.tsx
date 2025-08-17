@@ -16,7 +16,8 @@ const TeamSection: React.FC = () => {
       stats: {
         consultations: 24,
         availability: '24/7',
-        responseTime: '< 2 hours'
+        responseTime: '< 2 hours',
+        hoursConsulted: 48
       },
       recentActivity: [
         'Scheduled your upcoming lab work',
@@ -38,7 +39,8 @@ const TeamSection: React.FC = () => {
       stats: {
         consultations: 8,
         experience: '15+ years',
-        specialization: 'Preventive Medicine'
+        specialization: 'Preventive Medicine',
+        hoursConsulted: 16
       },
       recentActivity: [
         'Reviewed your latest biomarker results',
@@ -60,7 +62,8 @@ const TeamSection: React.FC = () => {
       stats: {
         consultations: 12,
         dataPoints: '10,000+',
-        insights: 'Weekly'
+        insights: 'Weekly',
+        hoursConsulted: 24
       },
       recentActivity: [
         'Analyzed your sleep and HRV trends',
@@ -82,7 +85,8 @@ const TeamSection: React.FC = () => {
       stats: {
         consultations: 16,
         plansCreated: 3,
-        mealsOptimized: 156
+        mealsOptimized: 156,
+        hoursConsulted: 32
       },
       recentActivity: [
         'Created your personalized meal plan for next month',
@@ -104,7 +108,8 @@ const TeamSection: React.FC = () => {
       stats: {
         consultations: 14,
         exercisesDesigned: 45,
-        injuryPrevention: '100%'
+        injuryPrevention: '100%',
+        hoursConsulted: 28
       },
       recentActivity: [
         'Updated your strength training progression',
@@ -126,7 +131,8 @@ const TeamSection: React.FC = () => {
       stats: {
         experience: '10+ years',
         clientSatisfaction: '98%',
-        teamCoordination: 'Expert'
+        teamCoordination: 'Expert',
+        hoursConsulted: 12
       },
       recentActivity: [
         'Conducted quarterly business review',

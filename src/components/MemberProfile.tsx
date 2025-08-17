@@ -16,63 +16,63 @@ const MemberProfile: React.FC = () => {
   const memberData = {
     snapshot: {
       preferredName: 'Rohan Patel',
-      dateOfBirth: '12 March 1979, 46, Male',
-      residence: 'Singapore, frequently travels to UK, US, South Korea, Jakarta',
-      occupation: 'Regional Head of Sales for a FinTech company with frequent international travel and high-stress demands',
-      personalAssistant: 'Sarah Tan',
+      dateOfBirth: '12 March 1985, 40, Male',
+      residence: 'Primary residence is Singapore, frequently travels to Kuala Lumpur, Delhi, Bangkok, and Tokyo',
+      occupation: 'Consultant at BCG firm with high-stress role involving frequent international travel, client meetings, and demanding projects',
+      personalAssistant: 'Priya Singh',
       profileImage: 'RP'
     },
     outcomes: {
       goals: [
         {
-          title: 'Reduce risk of heart disease',
-          description: 'Due to family history by maintaining healthy cholesterol and blood pressure levels',
-          targetDate: 'December 2026',
+          title: 'Reduce risk of heart disease by managing atherosclerosis',
+          description: 'Lower blood pressure from baseline of 145/95 mmHg to consistent target below 125/80 mmHg',
+          targetDate: 'Ongoing monitoring',
           priority: 'high'
         },
         {
-          title: 'Enhance cognitive function and focus',
-          description: 'For sustained mental performance in demanding work environment',
-          targetDate: 'June 2026',
+          title: 'Manage physiological impact of high work-related stress',
+          description: 'Build mental resilience through meditation and stress management techniques',
+          targetDate: 'Ongoing development',
           priority: 'high'
         },
         {
-          title: 'Implement annual full-body health screenings',
-          description: 'For early detection of debilitating diseases',
-          targetDate: 'November 2025',
-          priority: 'medium'
+          title: 'Improve cardiovascular endurance and functional strength',
+          description: 'Complete a multi-day trek with his son, Rohan (Project Trek)',
+          targetDate: 'Target completion within 12 months',
+          priority: 'high'
         }
       ],
-      motivation: 'Family history of heart disease; wants to proactively manage health for long-term career performance and to be present for his family.',
+      motivation: 'Initially triggered by anxiety after searching symptoms online. Primary motivation is to be healthy and capable enough to participate in a trek with his son, Rohan.',
       successMetrics: [
-        'VO2max, biological age, stress resilience',
-        'Blood panel markers (cholesterol, blood pressure, inflammatory markers)',
-        'Cognitive assessment scores, sleep quality (Garmin data)',
-        'Stress resilience (subjective self-assessment, Garmin HRV)'
+        'Daily biometric data, including blood pressure and resting heart rate',
+        'Objective clinical results from diagnostic panels (LDL cholesterol, hs-CRP)',
+        'Performance metrics like heart rate recovery after exertion',
+        'Real-world capabilities: feeling strong on training hikes and managing health while traveling'
       ]
     },
     insights: {
-      personality: 'Analytical, driven, values efficiency and evidence-based approaches',
-      changeStage: 'Highly motivated and ready to act, but time-constrained. Needs clear, concise action plans and data-driven insights',
-      socialSupport: 'Wife is supportive; has 2 young kids; employs a cook at home which helps with nutrition management. Mental-health history, current therapist or psychiatrist: No formal mental health history; manages work-related stress through exercise'
+      personality: 'Analytical and data-driven, finding that seeing numerical data makes choices "obvious". Proactive and highly engaged, often researching topics independently and valuing efficiency',
+      changeStage: 'Began in confusion and worry, but quickly progressed to being highly motivated and ready to act. Now in proactive phase, suggesting new health strategies like strength training and meditation',
+      socialSupport: 'Has a son named Rohan, who serves as significant motivation for long-term fitness goals. No formal mental health history, but identifies high work stress as critical issue and proactively seeks tools like meditation'
     },
     tech: {
-      wearables: 'Garmin watch (used for runs), considering Oura ring',
-      healthApps: 'Trainerize, MyFitnessPal, Whoop',
-      dataSharing: 'Willing to enable full data sharing from Garmin and any new wearables for comprehensive integration and analysis',
-      reportingPreference: 'Monthly consolidated health report focusing on key trends and actionable insights; quarterly deep-dive into specific health areas'
+      wearables: 'Initially used smartwatch to track sleep and heart rate, later added Polar H10 chest-strap heart rate monitor for accurate exercise data',
+      healthApps: 'Service\'s proprietary platform for communication and data logging, Headspace app for guided meditation',
+      dataSharing: 'Willingly and consistently shares data from wearables including sleep metrics, heart rate, workout details, and daily manual blood pressure readings',
+      reportingPreference: 'Engages with daily, real-time feedback from team. Values deeper data analysis from Performance Scientist and comprehensive progress reports at milestones'
     },
     communication: {
-      preferredChannels: 'Important updates and communication via PA (Sarah) for scheduling',
-      responseExpectations: 'Expects responses within 24-48 hours for non-urgent inquiries. For urgent health concerns, contact his PA immediately, who will then inform his wife',
-      detailPreference: 'Prefers executive summaries with clear recommendations, but appreciates access to granular data upon request to understand the underlying evidence',
-      language: 'English, Indian cultural background, no specific religious considerations impacting health services'
+      preferredChannels: 'Direct messaging/chat platform to communicate with entire care team including concierge (Ruby), nutritionist (Carla), physiotherapist (Rachel), and doctors (Dr. Warren)',
+      responseExpectations: 'For urgent health concerns (like high BP while traveling), contacts team immediately. Concierge escalates to lead doctor for immediate review and instruction',
+      detailPreference: 'Appreciates both concise strategic advice and detailed underlying science. Values "Rules for the Road" summaries but also requests detailed articles on topics like sleep and gut microbiome',
+      language: 'English, Indian cultural background, based in Singapore and familiar with local cuisine. No specific religious considerations mentioned'
     },
     logistics: {
-      availability: 'Exercises every morning (20 min routine), occasional runs. Office visits at least once every two weeks',
-      travel: 'Travel calendar provided by PA (Sarah) on a monthly basis. Requires flexible scheduling and consideration for time-zone adjustments during frequent travel (UK, US, South Korea, Jakarta)',
-      appointments: 'Prefers virtual appointments due to travel, but open to on-site for initial comprehensive assessments or specific procedures',
-      transport: 'Will arrange his own transport'
+      availability: 'Exercise sessions (walks and strength training) typically done in the evening. Relies on concierge Ruby to block out time in calendar',
+      travel: 'Travels internationally for work at least once every 4-6 weeks. Provides advance notice to concierge to manage logistics and health strategies for trips',
+      appointments: 'Majority of interactions are virtual through platform. Attends on-site appointments for comprehensive diagnostic panels',
+      transport: 'Concierge (Ruby) arranges airport transfers'
     }
   };
 
