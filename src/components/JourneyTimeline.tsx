@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, CheckCircle, Clock, ArrowRight, User, FlaskConical, Stethoscope, TrendingUp, MessageSquare, Users, Heart, Activity, Utensils, Dumbbell, Brain } from 'lucide-react';
+import { Calendar, CheckCircle, Clock, ArrowRight, User, FlaskConical, Stethoscope, TrendingUp, MessageSquare, Users, Heart, Activity, Utensils, Dumbbell, Brain, Award, Lightbulb } from 'lucide-react';
 
 interface JourneyTimelineProps {
   currentWeek: number;
@@ -28,18 +28,24 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)'],
         insights: 'This foundational week establishes your health baseline and creates the personalized framework for your entire journey.',
-        detailedDescription: 'Mr. Arun Sharma, a 40-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.'
+        detailedDescription: 'Mr. Arun Sharma, a 40-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.',
+        keyDecisions: [
+          {
+            decision: 'Team immediately took over logistics (scheduling, research) and prescribed simple, non-overwhelming initial tasks',
+            reasoning: 'The patient was in a state of high stress and confusion. The priority was to reduce his cognitive load and build trust by providing a clear support system and easy first steps to ensure early success and build confidence.'
+          }
+        ]
       });
     }
 
     if (week >= 2 && week <= 4) {
       phases.push({
         week: '2-4',
-        title: 'Week 2-4: Building Momentum',
+        title: 'Week 2-4: Building Confidence & Responding to Data',
         status: 'completed',
         icon: FlaskConical,
         color: 'from-green-500 to-green-600',
-        description: 'Comprehensive testing and initial lifestyle modifications begin.',
+        description: 'Building on baseline data, interpreting early results and navigating first real-world challenges.',
         activities: [
           'Complete blood panel and biomarker analysis',
           'Sleep study and stress assessment',
@@ -48,11 +54,25 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Dr. Warren', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Advik (Performance Scientist)'],
         insights: 'Early testing reveals key areas for improvement, setting the stage for targeted interventions.',
-        detailedDescription: 'The comprehensive testing phase reveals elevated cholesterol, poor sleep quality, and high cortisol levels. The team begins implementing targeted interventions.',
+        detailedDescription: 'Building on the baseline data and routine from Week 1, the focus shifted to interpreting early results and navigating the first real-world challenges. The comprehensive testing phase reveals elevated cholesterol, poor sleep quality, and high cortisol levels.',
         keyMetrics: [
           { metric: 'Cholesterol', value: '245 mg/dL', status: 'elevated' },
           { metric: 'Sleep Quality', value: '4/10', status: 'poor' },
           { metric: 'Stress Level', value: '8/10', status: 'high' }
+        ],
+        keyDecisions: [
+          {
+            decision: 'Reframe Lower HR as Progress',
+            reasoning: 'When the patient worried his lower heart rate meant he wasn\'t working hard enough, the team used this data point from his Week 1 routine to show his heart was getting more efficient, turning his confusion into a motivational win.'
+          },
+          {
+            decision: 'Connect Stress to BP',
+            reasoning: 'With several weeks of consistent data logs, the Performance Scientist introduced a deeper insight, showing the measurable link between the patient\'s stress and his blood pressure, making the abstract feeling of stress a tangible factor to manage.'
+          },
+          {
+            decision: 'Prioritize Recovery During Travel',
+            reasoning: 'During the high-stress KL trip, the team used the patient\'s real-time BP data to advise rest over exercise, demonstrating that the plan was adaptive and responsive to the stress-BP link they had just established.'
+          }
         ]
       });
     }
@@ -60,11 +80,11 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     if (week >= 4 && week <= 8) {
       phases.push({
         week: '4-8',
-        title: 'Week 4-8: Finding Rhythm',
+        title: 'Week 4-8: Adapting the Plan & Increasing Strength',
         status: week >= 8 ? 'completed' : 'in-progress',
         icon: Stethoscope,
         color: 'from-purple-500 to-purple-600',
-        description: 'Establishing sustainable routines and seeing first improvements.',
+        description: 'Successfully navigated first major challenge and adapting plan based on honest feedback.',
         activities: [
           'Daily meditation practice implementation',
           'Travel-friendly exercise routines',
@@ -73,11 +93,21 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Ruby', 'Rachel', 'Advik'],
         insights: 'Consistency begins to pay off with measurable improvements in energy and sleep.',
-        detailedDescription: 'Arun starts seeing real changes. His energy levels improve, and he successfully maintains his routine during a business trip to Singapore.',
+        detailedDescription: 'The patient had now successfully navigated his first major challenge (the KL trip) and was providing honest feedback about the plan\'s sustainability. Arun starts seeing real changes and energy improvements.',
         keyMetrics: [
           { metric: 'Energy Level', value: '+25%', status: 'improved' },
           { metric: 'HRV', value: '+15%', status: 'improved' },
           { metric: 'Sleep Quality', value: '6.5/10', status: 'improving' }
+        ],
+        keyDecisions: [
+          {
+            decision: 'Pivot to Flexible "Rules for the Road"',
+            reasoning: 'Based on the patient\'s feedback that a rigid meal plan was unrealistic, the Nutritionist shifted to a more flexible, principle-based framework. This decision made the plan more sustainable for his actual lifestyle of client dinners and travel.'
+          },
+          {
+            decision: 'Introduce Resistance Training',
+            reasoning: 'Since the patient\'s cardiovascular base was now solid from a month of consistent walking, the Physiotherapist added light resistance bands to introduce a new stimulus, prevent plateaus, and begin improving his metabolic health.'
+          }
         ]
       });
     }
@@ -85,11 +115,11 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
     if (week >= 8 && week <= 12) {
       phases.push({
         week: '8-12',
-        title: 'Week 8-12: Breakthrough Moment',
+        title: 'Week 8-12: Optimization & Deeper Engagement',
         status: week >= 12 ? 'completed' : 'in-progress',
         icon: TrendingUp,
         color: 'from-orange-500 to-orange-600',
-        description: 'Major health improvements and lifestyle transformation.',
+        description: 'Patient now highly confident and ready for sophisticated health optimization approach.',
         activities: [
           'Advanced cardiovascular training',
           'Personalized nutrition optimization',
@@ -98,32 +128,135 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Full Elyx Team', 'Dr. Warren', 'Neal (Concierge Lead)'],
         insights: 'Significant health improvements validate the personalized approach and motivate continued progress.',
-        detailedDescription: 'The 12-week mark brings remarkable results. Arun\'s cholesterol drops significantly, his resting heart rate improves, and he feels the best he has in years.',
+        detailedDescription: 'The patient was now highly confident and consistent, with a flexible nutrition system. He was ready for a more sophisticated approach to his health. The 12-week mark brings remarkable results with significant improvements across all metrics.',
         keyMetrics: [
           { metric: 'LDL Cholesterol', value: '-15%', status: 'excellent' },
           { metric: 'Resting Heart Rate', value: '-16 bpm', status: 'excellent' },
           { metric: 'Overall Energy', value: '+40%', status: 'excellent' }
+        ],
+        keyDecisions: [
+          {
+            decision: 'Upgrade to a Chest-Strap HR Monitor',
+            reasoning: 'To move beyond the basics, the team introduced a more accurate tool. This was necessary to enable the next phase of optimization—Zone Training—making his workouts more efficient.'
+          },
+          {
+            decision: 'Introduce Gut Health Foods',
+            reasoning: 'This decision was a direct response to the patient\'s own proactive question about the gut microbiome, which was sparked by his positive 3-month inflammation results. The team supported his deeper engagement with a food-first approach (kefir, kimchi).'
+          },
+          {
+            decision: 'Implement Structured Zone Training',
+            reasoning: 'Using the data from the new chest strap, the team evolved his walks into structured workouts with specific HR zones. This directly answered his need for continued progress by making his exercise more purposeful and effective.'
+          }
         ]
       });
     }
 
-    if (week >= 12) {
+    if (week >= 12 && week <= 16) {
       phases.push({
-        week: '12+',
-        title: 'Week 12+: The New You',
-        status: 'in-progress',
+        week: '12-16',
+        title: 'Week 12-16: Overcoming Plateaus & Travel Mastery',
+        status: week >= 16 ? 'completed' : 'in-progress',
         icon: MessageSquare,
         color: 'from-pink-500 to-pink-600',
-        description: 'Sustained transformation and planning for the future.',
+        description: 'Breaking through fitness plateaus and mastering travel challenges.',
         activities: [
-          'Long-term health strategy development',
-          'Advanced optimization protocols',
-          'Family health planning discussions',
-          'Celebration of achievements'
+          'Incline walking implementation',
+          'Universal travel menu creation',
+          'Plateau breakthrough strategies',
+          'Travel nutrition mastery'
         ],
-        teamInvolved: ['Full Elyx Team'],
-        insights: 'The transformation is complete, but the journey continues with advanced optimization and family health planning.',
-        detailedDescription: 'Six months later, Arun and his 12-year-old son embark on a challenging trek in the Himalayas - something he never thought possible before starting his health journey.',
+        teamInvolved: ['Rachel (Physiotherapist)', 'Carla (Nutritionist)', 'Advik (Performance Scientist)'],
+        insights: 'Advanced Zone Training leads to plateau, requiring strategic interventions to maintain progress.',
+        detailedDescription: 'Now using advanced Zone Training, the patient\'s body had adapted, leading to his first fitness plateau. Travel also remained a recurring challenge that needed systematic solutions.',
+        keyMetrics: [
+          { metric: 'Plateau Breakthrough', value: 'Achieved', status: 'excellent' },
+          { metric: 'Travel Compliance', value: '95%', status: 'excellent' },
+          { metric: 'Workout Intensity', value: '+20%', status: 'improved' }
+        ],
+        keyDecisions: [
+          {
+            decision: 'Introduce Incline Walking',
+            reasoning: 'In direct response to the plateau identified in his heart rate data, the Physiotherapist added incline to his walks. This provided a new challenge to increase intensity and break the plateau without the high impact of running.'
+          },
+          {
+            decision: 'Create a "Universal Travel Menu"',
+            reasoning: 'To address his frustration with travel dining, the Nutritionist evolved the "Rules for the Road" into a simpler, foolproof list of go-to meals. This took the guesswork out of eating on the road, making healthy choices easier during periods of high decision fatigue.'
+          }
+        ]
+      });
+    }
+
+    if (week >= 16 && week <= 24) {
+      phases.push({
+        week: '16-24',
+        title: 'Week 16-24: Aspirational Goals & Clinical Success',
+        status: week >= 24 ? 'completed' : 'in-progress',
+        icon: Award,
+        color: 'from-indigo-500 to-indigo-600',
+        description: 'Peak confidence and physical ability, shifting focus to aspirational life goals.',
+        activities: [
+          'Project Trek preparation',
+          'Medication dosage reduction',
+          '6-month progress report compilation',
+          'Advanced fitness protocols'
+        ],
+        teamInvolved: ['Full Elyx Team', 'Dr. Warren', 'Neal (Concierge Lead)'],
+        insights: 'Clinical success enables focus shift from management to aspirational goals with powerful intrinsic motivation.',
+        detailedDescription: 'The patient had successfully broken his plateau and mastered travel nutrition. His confidence and physical ability were at their peak, shifting his focus from clinical management to aspirational life goals like the trek with his son.',
+        keyMetrics: [
+          { metric: 'Statin Dosage', value: '-50%', status: 'excellent' },
+          { metric: 'Trek Readiness', value: '100%', status: 'excellent' },
+          { metric: 'Clinical Markers', value: 'Optimal', status: 'excellent' }
+        ],
+        keyDecisions: [
+          {
+            decision: 'Re-center the Plan on "Project Trek"',
+            reasoning: 'When the patient was invited on a trek by his son, the team immediately made this his new central goal. This harnessed a powerful intrinsic motivation, giving all his training a deeper, more meaningful purpose.'
+          },
+          {
+            decision: 'Reduce Medication Dosage',
+            reasoning: 'This was a direct result of his sustained, excellent clinical data over the previous months. Halving his statin dose was the ultimate validation that his lifestyle changes had become his "primary medicine," marking a huge clinical and motivational milestone.'
+          },
+          {
+            decision: 'Share a 6-Month Progress Report',
+            reasoning: 'To mark the half-year anniversary, the Performance Scientist compiled all his data into a visual report. This powerfully illustrated his transformation, reinforcing the value of the thousands of good choices he had made.'
+          }
+        ]
+      });
+    }
+
+    if (week >= 24) {
+      phases.push({
+        week: '24+',
+        title: 'Week 24+: Self-Management & Optimal Well-being',
+        status: 'in-progress',
+        icon: Heart,
+        color: 'from-green-500 to-teal-600',
+        description: 'Empowered self-management and sustained excellence with holistic well-being.',
+        activities: [
+          'Semi-annual health reviews',
+          'Meditation practice implementation',
+          'Self-directed health management',
+          'Mentorship and legacy planning'
+        ],
+        teamInvolved: ['Periodic Team Check-ins'],
+        insights: 'Complete transformation achieved with patient fully empowered for autonomous health management.',
+        detailedDescription: 'Having achieved major clinical and fitness goals, the patient felt fully empowered and self-sufficient, as proven by a successful, anxiety-free trip to Tokyo. Six months later, Arun and his 12-year-old son embark on a challenging trek in the Himalayas.',
+        keyMetrics: [
+          { metric: 'Self-Management', value: '100%', status: 'excellent' },
+          { metric: 'Stress Resilience', value: 'Mastered', status: 'excellent' },
+          { metric: 'Trek Completion', value: 'Success', status: 'excellent' }
+        ],
+        keyDecisions: [
+          {
+            decision: '"Graduate" to a Self-Management Phase',
+            reasoning: 'In response to the patient\'s own statement that he "has the tools" to manage his health, the team shifted from intensive daily monitoring to semi-annual reviews. This decision formally recognized his autonomy and moved him into the final, sustainable phase of the journey.'
+          },
+          {
+            decision: 'Introduce Meditation for Stress Resilience',
+            reasoning: 'After a major work project highlighted stress as his final frontier, the patient himself sought to improve his mental resilience. The team supported this self-directed goal by providing a strategic breakdown of meditation apps, completing his toolkit for holistic well-being.'
+          }
+        ],
         finalImage: {
           description: 'A picture of Mr. Sharma and his son hiking in the mountains, both smiling and healthy.',
           quote: 'You didn\'t just give me a plan; you gave me back my future.'
@@ -154,10 +287,12 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
   const getPhaseTitle = (week: number) => {
     if (week === 1) return 'Week 1: The Wake-Up Call';
-    if (week >= 2 && week <= 4) return 'Weeks 2-4: Building Momentum';
-    if (week >= 4 && week <= 8) return 'Weeks 4-8: Finding Rhythm';
-    if (week >= 8 && week <= 12) return 'Weeks 8-12: Breakthrough Moment';
-    if (week >= 12) return 'Week 12+: The New You';
+    if (week >= 2 && week <= 4) return 'Weeks 2-4: Building Confidence & Responding to Data';
+    if (week >= 4 && week <= 8) return 'Weeks 4-8: Adapting the Plan & Increasing Strength';
+    if (week >= 8 && week <= 12) return 'Weeks 8-12: Optimization & Deeper Engagement';
+    if (week >= 12 && week <= 16) return 'Weeks 12-16: Overcoming Plateaus & Travel Mastery';
+    if (week >= 16 && week <= 24) return 'Weeks 16-24: Aspirational Goals & Clinical Success';
+    if (week >= 24) return 'Week 24+: Self-Management & Optimal Well-being';
     return `Week ${week}`;
   };
 
@@ -251,6 +386,26 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
                   {isExpanded && (
                     <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
+                      {/* Key Decisions & Reasoning */}
+                      {phase.keyDecisions && (
+                        <div className="bg-yellow-50 rounded-xl p-6">
+                          <h4 className="font-semibold text-yellow-800 mb-4 flex items-center">
+                            <Lightbulb className="mr-2" size={18} />
+                            Key Decisions & Reasoning
+                          </h4>
+                          <div className="space-y-4">
+                            {phase.keyDecisions.map((decision, idx) => (
+                              <div key={idx} className="bg-white rounded-lg p-4">
+                                <h5 className="font-semibold text-gray-800 mb-2">Decision: {decision.decision}</h5>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                  <strong>Reasoning:</strong> {decision.reasoning}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {/* Key Metrics */}
                       {phase.keyMetrics && (
                         <div className="bg-blue-50 rounded-xl p-6">
@@ -347,16 +502,16 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         <p className="text-gray-600 mb-4">Follow the complete transformation story week by week</p>
         <div className="flex justify-center space-x-2">
           <button
-            onClick={() => setCurrentWeek(2)}
+            onClick={() => setCurrentWeek(4)}
             className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
-            Week 2
+            Week 4
           </button>
           <button
-            onClick={() => setCurrentWeek(8)}
+            onClick={() => setCurrentWeek(12)}
             className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
-            Week 8
+            Week 12
           </button>
           <button
             onClick={() => setCurrentWeek(16)}
@@ -365,10 +520,10 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
             Week 16
           </button>
           <button
-            onClick={() => setCurrentWeek(24)}
+            onClick={() => setCurrentWeek(28)}
             className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
-            Week 24
+            Week 28
           </button>
         </div>
       </div>
