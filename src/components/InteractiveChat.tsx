@@ -82,7 +82,7 @@ const InteractiveChat: React.FC<InteractiveChatProps> = ({ onClose }) => {
     <div className="fixed inset-0 bg-black/50 flex items-end justify-end p-6 z-50">
       <div className="bg-white rounded-2xl shadow-2xl w-96 h-[600px] flex flex-col animate-in slide-in-from-bottom duration-300">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+        <div className="bg-gradient-to-r from-teal-500 to-emerald-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-white/20 rounded-full">
               <MessageCircle size={20} />
@@ -104,7 +104,7 @@ const InteractiveChat: React.FC<InteractiveChatProps> = ({ onClose }) => {
         <div className="flex-1 p-4 overflow-y-auto space-y-4">
           {messages.map((message, index) => (
             <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[80%] ${message.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800'} rounded-2xl px-4 py-2`}>
+              <div className={`max-w-[80%] ${message.type === 'user' ? 'bg-teal-500 text-white' : 'bg-slate-100 text-slate-800'} rounded-2xl px-4 py-2`}>
                 <div className="flex items-start space-x-2">
                   {message.type === 'bot' && (
                     <Bot size={16} className="mt-1 flex-shrink-0" />
@@ -120,13 +120,13 @@ const InteractiveChat: React.FC<InteractiveChatProps> = ({ onClose }) => {
           
           {isTyping && (
             <div className="flex justify-start">
-              <div className="bg-gray-100 text-gray-800 rounded-2xl px-4 py-2">
+              <div className="bg-slate-100 text-slate-800 rounded-2xl px-4 py-2">
                 <div className="flex items-center space-x-2">
                   <Bot size={16} />
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@ const InteractiveChat: React.FC<InteractiveChatProps> = ({ onClose }) => {
                 <button
                   key={index}
                   onClick={() => handleQuickQuestion(question)}
-                  className="w-full text-left text-xs text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-2 rounded-lg transition-colors"
+                  className="w-full text-left text-xs text-teal-600 hover:text-teal-800 hover:bg-teal-50 p-2 rounded-lg transition-colors"
                 >
                   {question}
                 </button>
@@ -162,11 +162,11 @@ const InteractiveChat: React.FC<InteractiveChatProps> = ({ onClose }) => {
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               placeholder="Ask about your health journey..."
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="flex-1 px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
             />
             <button
               onClick={handleSendMessage}
-              className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all"
+              className="p-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-xl hover:shadow-lg transition-all"
             >
               <Send size={18} />
             </button>

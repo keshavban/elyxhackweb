@@ -13,7 +13,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.min(82, 42 + ((currentWeek - 1) * 3)),
       unit: '%',
       icon: Zap,
-      color: 'from-yellow-400 to-orange-500',
+      color: 'from-amber-400 to-orange-500',
       trend: 'up'
     },
     {
@@ -22,7 +22,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.min(89, 62 + ((currentWeek - 1) * 2.5)),
       unit: '%',
       icon: Moon,
-      color: 'from-purple-400 to-purple-600',
+      color: 'from-indigo-400 to-purple-600',
       trend: 'up'
     },
     {
@@ -31,7 +31,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.max(28, 88 - ((currentWeek - 1) * 4)),
       unit: '%',
       icon: Activity,
-      color: 'from-red-400 to-orange-500',
+      color: 'from-rose-400 to-red-500',
       trend: 'down'
     },
     {
@@ -40,7 +40,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.min(86, 68 + ((currentWeek - 1) * 1.5)),
       unit: '/100',
       icon: Heart,
-      color: 'from-red-400 to-red-600',
+      color: 'from-rose-400 to-pink-600',
       trend: 'up'
     },
     {
@@ -49,7 +49,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.min(75, 42 + ((currentWeek - 1) * 3)),
       unit: 'min/day',
       icon: Activity,
-      color: 'from-green-400 to-green-600',
+      color: 'from-emerald-400 to-emerald-600',
       trend: 'up'
     },
     {
@@ -58,7 +58,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.min(92, 62 + ((currentWeek - 1) * 2.8)),
       unit: '%',
       icon: Droplets,
-      color: 'from-blue-400 to-blue-600',
+      color: 'from-cyan-400 to-teal-600',
       trend: 'up'
     },
     {
@@ -67,7 +67,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       previous: Math.max(73, 86 - ((currentWeek - 1) * 1.2)),
       unit: 'kg',
       icon: Scale,
-      color: 'from-indigo-400 to-indigo-600',
+      color: 'from-slate-400 to-slate-600',
       trend: 'down'
     }
   ];
@@ -77,8 +77,8 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
   // Special handling for stress level gauge
   const stressMetric = metrics.find(m => m.name === 'Stress Level');
   const getStressZone = (level: number) => {
-    if (level <= 30) return { zone: 'Low', color: 'text-green-600', bgColor: 'bg-green-100', description: 'Calm and relaxed' };
-    if (level <= 60) return { zone: 'Moderate', color: 'text-yellow-600', bgColor: 'bg-yellow-100', description: 'Some stress detected' };
+    if (level <= 30) return { zone: 'Low', color: 'text-emerald-600', bgColor: 'bg-emerald-100', description: 'Calm and relaxed' };
+    if (level <= 60) return { zone: 'Moderate', color: 'text-cyan-600', bgColor: 'bg-cyan-100', description: 'Some stress detected' };
     return { zone: 'High', color: 'text-red-600', bgColor: 'bg-red-100', description: 'Significant stress detected' };
   };
 
@@ -87,24 +87,24 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
   return (
     <div className="space-y-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-700 bg-clip-text text-transparent mb-4">
           Your Health Metrics
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-slate-600">
           Track your progress across key health indicators - Week {currentWeek}
         </p>
       </div>
 
       {/* Overall Health Score */}
-      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Overall Health Score</h2>
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 text-center">
+        <h2 className="text-2xl font-bold text-slate-800 mb-4">Overall Health Score</h2>
         <div className="relative w-48 h-48 mx-auto">
           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
             <circle
               cx="50"
               cy="50"
               r="40"
-              stroke="#e5e7eb"
+              stroke="#e2e8f0"
               strokeWidth="8"
               fill="none"
             />
@@ -121,57 +121,57 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
             />
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#10b981" />
-                <stop offset="100%" stopColor="#3b82f6" />
+                <stop offset="0%" stopColor="#14b8a6" />
+                <stop offset="100%" stopColor="#059669" />
               </linearGradient>
             </defs>
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 {overallScore}
               </div>
-              <div className="text-gray-600 text-sm">out of 100</div>
+              <div className="text-slate-600 text-sm">out of 100</div>
             </div>
           </div>
         </div>
-        <p className="text-gray-600 mt-4">
+        <p className="text-slate-600 mt-4">
           {overallScore >= 85 ? 'Excellent progress!' : overallScore >= 70 ? 'Good improvement!' : 'Keep building momentum!'}
         </p>
       </div>
 
       {/* Stress Level Gauge */}
       {stressMetric && stressZone && (
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Real-Time Stress Monitor</h2>
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+          <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">Real-Time Stress Monitor</h2>
           <div className="flex items-center justify-center">
             <div className="relative w-64 h-32">
               <svg className="w-full h-full" viewBox="0 0 200 100">
                 {/* Background arc */}
                 <path
                   d="M 20 80 A 80 80 0 0 1 180 80"
-                  stroke="#e5e7eb"
+                  stroke="#e2e8f0"
                   strokeWidth="12"
                   fill="none"
                 />
                 {/* Green zone */}
                 <path
                   d="M 20 80 A 80 80 0 0 1 73.2 20"
-                  stroke="#10b981"
+                  stroke="#059669"
                   strokeWidth="12"
                   fill="none"
                 />
                 {/* Yellow zone */}
                 <path
                   d="M 73.2 20 A 80 80 0 0 1 126.8 20"
-                  stroke="#f59e0b"
+                  stroke="#0891b2"
                   strokeWidth="12"
                   fill="none"
                 />
                 {/* Red zone */}
                 <path
                   d="M 126.8 20 A 80 80 0 0 1 180 80"
-                  stroke="#ef4444"
+                  stroke="#dc2626"
                   strokeWidth="12"
                   fill="none"
                 />
@@ -182,11 +182,11 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
                     y1="80"
                     x2="100"
                     y2="25"
-                    stroke="#374151"
+                    stroke="#475569"
                     strokeWidth="3"
                     strokeLinecap="round"
                   />
-                  <circle cx="100" cy="80" r="6" fill="#374151" />
+                  <circle cx="100" cy="80" r="6" fill="#475569" />
                 </g>
               </svg>
               <div className="absolute bottom-0 left-0 right-0 text-center">
@@ -194,11 +194,11 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
                   <span className="text-lg mr-2">{Math.round(stressMetric.current)}%</span>
                   <span>{stressZone.zone}</span>
                 </div>
-                <p className="text-sm text-gray-600 mt-2">{stressZone.description}</p>
+                <p className="text-sm text-slate-600 mt-2">{stressZone.description}</p>
               </div>
             </div>
           </div>
-          <div className="flex justify-between text-xs text-gray-500 mt-4">
+          <div className="flex justify-between text-xs text-slate-500 mt-4">
             <span>Low (0-30%)</span>
             <span>Moderate (30-60%)</span>
             <span>High (60-100%)</span>
@@ -214,12 +214,12 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
           const isImproving = (metric.trend === 'up' && improvement > 0) || (metric.trend === 'down' && improvement < 0);
 
           return (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl bg-gradient-to-r ${metric.color} text-white`}>
                   <Icon size={24} />
                 </div>
-                <div className={`flex items-center space-x-1 ${isImproving ? 'text-green-600' : 'text-red-600'}`}>
+                <div className={`flex items-center space-x-1 ${isImproving ? 'text-emerald-600' : 'text-red-600'}`}>
                   {isImproving ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
                   <span className="text-sm font-medium">
                     {Math.abs(improvement).toFixed(1)}
@@ -227,23 +227,23 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
                 </div>
               </div>
               
-              <h3 className="font-bold text-gray-800 text-lg mb-2">{metric.name}</h3>
+              <h3 className="font-bold text-slate-800 text-lg mb-2">{metric.name}</h3>
               
               <div className="flex items-baseline space-x-2 mb-4">
-                <span className="text-3xl font-bold text-gray-800">
+                <span className="text-3xl font-bold text-slate-800">
                   {metric.current.toFixed(1)}
                 </span>
-                <span className="text-gray-500">{metric.unit}</span>
+                <span className="text-slate-500">{metric.unit}</span>
               </div>
               
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
                   className={`h-2 rounded-full bg-gradient-to-r ${metric.color} transition-all duration-1000 ease-out`}
                   style={{ width: `${(metric.current / 100) * 100}%` }}
                 ></div>
               </div>
               
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-slate-600 mt-2">
                 {isImproving ? 'Improving steadily' : 'Needs attention'}
               </p>
             </div>
@@ -252,24 +252,24 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ currentWeek }) => {
       </div>
 
       {/* Weekly Progress Chart */}
-      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Weekly Progress Trend</h2>
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+        <h2 className="text-2xl font-bold text-slate-800 mb-6">Weekly Progress Trend</h2>
         <div className="space-y-4">
           {metrics.slice(0, 3).map((metric, index) => {
             const Icon = metric.icon;
             return (
-              <div key={index} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
+              <div key={index} className="flex items-center space-x-4 p-4 bg-slate-50 rounded-xl">
                 <div className={`p-2 rounded-lg bg-gradient-to-r ${metric.color} text-white`}>
                   <Icon size={20} />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-medium text-gray-800">{metric.name}</span>
-                    <span className="text-sm text-gray-600">
+                    <span className="font-medium text-slate-800">{metric.name}</span>
+                    <span className="text-sm text-slate-600">
                       {metric.current.toFixed(1)} {metric.unit}
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-slate-200 rounded-full h-2">
                     <div
                       className={`h-2 rounded-full bg-gradient-to-r ${metric.color} transition-all duration-1000 ease-out`}
                       style={{ width: `${(metric.current / 100) * 100}%` }}

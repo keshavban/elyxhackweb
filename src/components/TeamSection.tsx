@@ -150,10 +150,10 @@ const TeamSection: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-emerald-700 bg-clip-text text-transparent mb-4">
           The Elyx Concierge Team
         </h1>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+        <p className="text-xl text-slate-600 max-w-4xl mx-auto">
           This team is fixed, but their communication style will adapt slightly to your persona. Their roles are distinct, working together as "The Cast of Experts" to optimize your health journey.
         </p>
       </div>
@@ -165,7 +165,7 @@ const TeamSection: React.FC = () => {
             <div
               key={member.id}
               className={`bg-white rounded-2xl p-6 shadow-lg border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${
-                selectedMember === member.id ? 'border-blue-300 ring-4 ring-blue-100' : 'border-gray-100'
+                selectedMember === member.id ? 'border-teal-300 ring-4 ring-teal-100' : 'border-slate-100'
               }`}
               onClick={() => setSelectedMember(selectedMember === member.id ? null : member.id)}
             >
@@ -178,19 +178,19 @@ const TeamSection: React.FC = () => {
                   />
                 </div>
                 
-                <h3 className="font-bold text-gray-800 text-lg mb-1">{member.name}</h3>
-                <p className="text-gray-600 text-sm mb-3">{member.role}</p>
+                <h3 className="font-bold text-slate-800 text-lg mb-1">{member.name}</h3>
+                <p className="text-slate-600 text-sm mb-3">{member.role}</p>
                 
-                <div className="flex items-center justify-center space-x-1 text-gray-500 mb-4">
+                <div className="flex items-center justify-center space-x-1 text-slate-500 mb-4">
                   <Icon size={16} />
                   <span className="text-xs">{member.expertise}</span>
                 </div>
                 
                 <div className="flex justify-center space-x-2">
-                  <button className="p-2 bg-gray-100 hover:bg-blue-100 rounded-full transition-colors">
+                  <button className="p-2 bg-slate-100 hover:bg-teal-100 rounded-full transition-colors">
                     <MessageCircle size={16} />
                   </button>
-                  <button className="p-2 bg-gray-100 hover:bg-green-100 rounded-full transition-colors">
+                  <button className="p-2 bg-slate-100 hover:bg-emerald-100 rounded-full transition-colors">
                     <Calendar size={16} />
                   </button>
                 </div>
@@ -201,7 +201,7 @@ const TeamSection: React.FC = () => {
       </div>
 
       {selectedMemberData && (
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-200 animate-in slide-in-from-bottom duration-500">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-teal-200 animate-in slide-in-from-bottom duration-500">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
@@ -211,61 +211,61 @@ const TeamSection: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">{selectedMemberData.name}</h2>
-              <p className="text-gray-600 mb-4">{selectedMemberData.role}</p>
-              <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                <h4 className="font-semibold text-gray-800 mb-2">Role Description</h4>
-                <p className="text-gray-700 text-sm leading-relaxed">{selectedMemberData.detailedRole}</p>
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">{selectedMemberData.name}</h2>
+              <p className="text-slate-600 mb-4">{selectedMemberData.role}</p>
+              <div className="bg-slate-50 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-slate-800 mb-2">Role Description</h4>
+                <p className="text-slate-700 text-sm leading-relaxed">{selectedMemberData.detailedRole}</p>
               </div>
             </div>
             
             <div>
-              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+              <h3 className="font-bold text-slate-800 mb-4 flex items-center">
                 <Award className="mr-2" size={20} />
                 Performance Stats
               </h3>
               <div className="space-y-3 mb-6">
                 {Object.entries(selectedMemberData.stats).map(([key, value]) => (
                   <div key={key} className="flex justify-between items-center">
-                    <span className="text-gray-600 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
-                    <span className="font-semibold text-gray-800">{value}</span>
+                    <span className="text-slate-600 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                    <span className="font-semibold text-slate-800">{value}</span>
                   </div>
                 ))}
               </div>
               
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-2">Communication Voice</h4>
-                <p className="text-blue-700 text-sm leading-relaxed">{selectedMemberData.voice}</p>
+              <div className="bg-teal-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-teal-800 mb-2">Communication Voice</h4>
+                <p className="text-teal-700 text-sm leading-relaxed">{selectedMemberData.voice}</p>
               </div>
             </div>
             
             <div>
-              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+              <h3 className="font-bold text-slate-800 mb-4 flex items-center">
                 <Clock className="mr-2" size={20} />
                 Recent Activity
               </h3>
               <div className="space-y-3 mb-6">
                 {selectedMemberData.recentActivity.map((activity, index) => (
                   <div key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-600 text-sm">{activity}</span>
+                    <div className="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-slate-600 text-sm">{activity}</span>
                   </div>
                 ))}
               </div>
               
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-green-800 mb-2">About {selectedMemberData.name}</h4>
-                <p className="text-green-700 text-sm leading-relaxed">{selectedMemberData.bio}</p>
+              <div className="bg-emerald-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-emerald-800 mb-2">About {selectedMemberData.name}</h4>
+                <p className="text-emerald-700 text-sm leading-relaxed">{selectedMemberData.bio}</p>
               </div>
             </div>
           </div>
           
-          <div className="flex justify-center space-x-4 mt-8 pt-6 border-t border-gray-100">
-            <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all">
+          <div className="flex justify-center space-x-4 mt-8 pt-6 border-t border-slate-100">
+            <button className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-xl hover:shadow-lg transition-all">
               <MessageCircle className="inline mr-2" size={18} />
               Send Message
             </button>
-            <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl transition-colors">
+            <button className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl transition-colors">
               <Calendar className="inline mr-2" size={18} />
               Schedule Meeting
             </button>

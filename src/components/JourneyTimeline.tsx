@@ -301,17 +301,17 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       {/* Progress Bar with Running Man */}
       <div className="relative">
         <div className="flex items-center justify-between mb-8">
-          <div className="text-lg font-semibold text-gray-800">Week {currentWeek} of your journey</div>
+          <div className="text-lg font-semibold text-slate-700">Week {currentWeek} of your journey</div>
           <div className="flex space-x-2">
             <button
               onClick={() => setCurrentWeek(Math.max(1, currentWeek - 1))}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors text-slate-600"
             >
               Previous Week
             </button>
             <button
               onClick={() => setCurrentWeek(Math.min(20, currentWeek + 1))}
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all"
+              className="px-4 py-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-lg hover:shadow-lg transition-all"
             >
               Next Week
             </button>
@@ -319,14 +319,14 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         </div>
         
         <div className="relative mb-4">
-          <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full absolute top-2 transition-all duration-500 ease-out" 
-               style={{ left: `calc(${(currentWeek / 20) * 100}% - 24px)` }}>
+          <div className="w-6 h-6 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full absolute top-1 transition-all duration-500 ease-out shadow-lg border-2 border-white" 
+               style={{ left: `calc(${(currentWeek / 20) * 100}% - 12px)` }}>
           </div>
         </div>
         
-        <div className="w-full bg-gray-200 rounded-full h-3 mb-12 mt-12">
+        <div className="w-full bg-slate-200 rounded-full h-4 mb-12 mt-12">
           <div 
-            className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
+            className="bg-gradient-to-r from-teal-500 to-emerald-600 h-4 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${(currentWeek / 20) * 100}%` }}
           ></div>
         </div>
@@ -334,7 +334,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
       {/* Current Week's Journey Phases */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl font-bold text-slate-800 mb-6">
           {getPhaseTitle(currentWeek)}
         </h2>
         
@@ -374,30 +374,30 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
                           : phase.status === 'in-progress'
                           ? 'bg-orange-500 text-white'
                           : 'bg-gray-300 text-gray-600'
-                      }`}>
-                        {phase.status === 'completed' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                        <h3 className="text-xl font-bold text-slate-800">{phase.title}</h3>
+                        <span className="text-sm px-3 py-1 rounded-full bg-slate-100 text-slate-600">
                       </div>
                       <ArrowRight 
                         className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} 
-                        size={20} 
-                      />
+                      <p className="text-slate-600 mt-1">{phase.description}</p>
+                      <p className="text-slate-700 mt-2 text-sm leading-relaxed">{phase.detailedDescription}</p>
                     </div>
                   </div>
 
                   {isExpanded && (
-                    <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
+                    <div className="mt-6 pt-6 border-t border-slate-100 space-y-6 animate-in slide-in-from-top duration-300">
                       {/* Key Decisions & Reasoning */}
                       {phase.keyDecisions && (
-                        <div className="bg-yellow-50 rounded-xl p-6">
-                          <h4 className="font-semibold text-yellow-800 mb-4 flex items-center">
+                        <div className="bg-amber-50 rounded-xl p-6">
+                          <h4 className="font-semibold text-amber-800 mb-4 flex items-center">
                             <Lightbulb className="mr-2" size={18} />
                             Key Decisions & Reasoning
                           </h4>
                           <div className="space-y-4">
                             {phase.keyDecisions.map((decision, idx) => (
                               <div key={idx} className="bg-white rounded-lg p-4">
-                                <h5 className="font-semibold text-gray-800 mb-2">Decision: {decision.decision}</h5>
-                                <p className="text-gray-700 text-sm leading-relaxed">
+                                <h5 className="font-semibold text-slate-800 mb-2">Decision: {decision.decision}</h5>
+                                <p className="text-slate-700 text-sm leading-relaxed">
                                   <strong>Reasoning:</strong> {decision.reasoning}
                                 </p>
                               </div>
@@ -408,20 +408,20 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
                       {/* Key Metrics */}
                       {phase.keyMetrics && (
-                        <div className="bg-blue-50 rounded-xl p-6">
-                          <h4 className="font-semibold text-blue-800 mb-4 flex items-center">
+                        <div className="bg-teal-50 rounded-xl p-6">
+                          <h4 className="font-semibold text-teal-800 mb-4 flex items-center">
                             <Activity className="mr-2" size={18} />
                             Key Health Improvements
                           </h4>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {phase.keyMetrics.map((metric, idx) => (
                               <div key={idx} className="bg-white rounded-lg p-4 text-center">
-                                <div className="font-bold text-lg text-gray-800">{metric.value}</div>
-                                <div className="text-sm text-gray-600">{metric.metric}</div>
+                                <div className="font-bold text-lg text-slate-800">{metric.value}</div>
+                                <div className="text-sm text-slate-600">{metric.metric}</div>
                                 <div className={`text-xs mt-1 px-2 py-1 rounded-full ${
-                                  metric.status === 'excellent' ? 'bg-green-100 text-green-800' :
-                                  metric.status === 'improved' ? 'bg-blue-100 text-blue-800' :
-                                  metric.status === 'improving' ? 'bg-yellow-100 text-yellow-800' :
+                                  metric.status === 'excellent' ? 'bg-emerald-100 text-emerald-800' :
+                                  metric.status === 'improved' ? 'bg-teal-100 text-teal-800' :
+                                  metric.status === 'improving' ? 'bg-cyan-100 text-cyan-800' :
                                   'bg-red-100 text-red-800'
                                 }`}>
                                   {metric.status}
@@ -434,27 +434,27 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
                       {/* Final Success Image */}
                       {phase.finalImage && (
-                        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 text-center">
+                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-8 text-center">
                           <div className="mb-6">
-                            <div className="w-32 h-32 mx-auto bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl mb-4">
+                            <div className="w-32 h-32 mx-auto bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white text-4xl mb-4">
                               🏔️
                             </div>
-                            <p className="text-gray-600 mb-4">{phase.finalImage.description}</p>
+                            <p className="text-slate-600 mb-4">{phase.finalImage.description}</p>
                           </div>
-                          <blockquote className="text-2xl font-bold text-gray-800 italic">
+                          <blockquote className="text-2xl font-bold text-slate-800 italic">
                             "{phase.finalImage.quote}"
                           </blockquote>
-                          <p className="text-gray-600 mt-2">- Arun Sharma</p>
+                          <p className="text-slate-600 mt-2">- Arun Sharma</p>
                         </div>
                       )}
 
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-gray-800 mb-3">Key Activities</h4>
+                          <h4 className="font-semibold text-slate-800 mb-3">Key Activities</h4>
                           <ul className="space-y-2">
                             {phase.activities.map((activity, idx) => (
-                              <li key={idx} className="flex items-start space-x-2 text-gray-600">
-                                <CheckCircle size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                              <li key={idx} className="flex items-start space-x-2 text-slate-600">
+                                <CheckCircle size={16} className="text-emerald-500 mt-1 flex-shrink-0" />
                                 <span className="text-sm">{activity}</span>
                               </li>
                             ))}
@@ -462,19 +462,19 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-gray-800 mb-3">Team Members Involved</h4>
+                          <h4 className="font-semibold text-slate-800 mb-3">Team Members Involved</h4>
                           <div className="flex flex-wrap gap-2 mb-4">
                             {phase.teamInvolved.map((member, idx) => (
-                              <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                              <span key={idx} className="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">
                                 {member}
                               </span>
                             ))}
                           </div>
                           
-                          <h4 className="font-semibold text-gray-800 mb-2">Phase Insights</h4>
-                          <p className="text-gray-600 italic bg-gray-50 p-3 rounded-lg text-sm leading-relaxed">
-                            {phase.insights}
-                          </p>
+                          <h4 className="font-semibold text-slate-800 mb-2">Phase Insights</h4>
+                          <p className="text-slate-600 italic bg-slate-50 p-3 rounded-lg text-sm leading-relaxed">
+                        ? 'bg-cyan-500 text-white'
+                        : 'bg-slate-300 text-slate-600'
                         </div>
                       </div>
                     </div>
@@ -484,12 +484,12 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
             );
           })
         ) : (
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-            <div className="text-gray-400 mb-4">
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 text-center">
+            <div className="text-slate-400 mb-4">
               <Clock size={48} className="mx-auto" />
             </div>
-            <h3 className="text-xl font-bold text-gray-600 mb-2">Journey Phase Coming Soon</h3>
-            <p className="text-gray-500">
+            <h3 className="text-xl font-bold text-slate-600 mb-2">Journey Phase Coming Soon</h3>
+            <p className="text-slate-500">
               This phase of your health journey will be available as you progress through your program.
             </p>
           </div>
@@ -497,31 +497,31 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
       </div>
 
       {/* Week Navigation Helper */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 text-center">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Explore Arun's Journey</h3>
-        <p className="text-gray-600 mb-4">Follow the complete transformation story week by week</p>
+      <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-6 text-center">
+        <h3 className="text-lg font-semibold text-slate-800 mb-2">Explore Arun's Journey</h3>
+        <p className="text-slate-600 mb-4">Follow the complete transformation story week by week</p>
         <div className="flex justify-center space-x-2">
           <button
             onClick={() => setCurrentWeek(4)}
-            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            className="px-4 py-2 bg-white text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
             Week 4
           </button>
           <button
             onClick={() => setCurrentWeek(12)}
-            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            className="px-4 py-2 bg-white text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
             Week 12
           </button>
           <button
             onClick={() => setCurrentWeek(16)}
-            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            className="px-4 py-2 bg-white text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
             Week 16
           </button>
           <button
             onClick={() => setCurrentWeek(28)}
-            className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            className="px-4 py-2 bg-white text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm"
           >
             Week 28
           </button>
