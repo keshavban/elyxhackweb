@@ -28,24 +28,7 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         ],
         teamInvolved: ['Ruby (Concierge)', 'Dr. Warren (Medical Strategist)'],
         insights: 'This foundational week establishes your health baseline and creates the personalized framework for your entire journey.',
-        detailedDescription: 'Mr. Arun Sharma, a 40-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.',
-        conversations: [
-          {
-            speaker: 'Dr. Warren',
-            message: 'Mr. Sharma, your stress levels and family history are concerning. We need to take a comprehensive approach to your health.',
-            alignment: 'left'
-          },
-          {
-            speaker: 'Arun',
-            message: 'I know I need to make changes, but I travel constantly for work. How can I maintain consistency?',
-            alignment: 'right'
-          },
-          {
-            speaker: 'Ruby',
-            message: 'That\'s exactly why we\'re here. We\'ll create a plan that works with your lifestyle, not against it.',
-            alignment: 'left'
-          }
-        ]
+        detailedDescription: 'Mr. Arun Sharma, a 40-year-old executive, starts his health journey feeling overwhelmed by work stress and concerned about his family history of heart disease. The initial consultation reveals elevated stress levels and poor sleep patterns.'
       });
     }
 
@@ -66,23 +49,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         teamInvolved: ['Dr. Warren', 'Carla (Nutritionist)', 'Rachel (Physiotherapist)', 'Advik (Performance Scientist)'],
         insights: 'Early testing reveals key areas for improvement, setting the stage for targeted interventions.',
         detailedDescription: 'The comprehensive testing phase reveals elevated cholesterol, poor sleep quality, and high cortisol levels. The team begins implementing targeted interventions.',
-        conversations: [
-          {
-            speaker: 'Carla',
-            message: 'Your cholesterol is at 245 mg/dL. We need to focus on anti-inflammatory foods and omega-3s.',
-            alignment: 'left'
-          },
-          {
-            speaker: 'Arun',
-            message: 'I eat out constantly for business. How do I control what I eat?',
-            alignment: 'right'
-          },
-          {
-            speaker: 'Carla',
-            message: 'I\'ll work with your assistant to pre-select restaurants and meals. We\'ll make this seamless.',
-            alignment: 'left'
-          }
-        ],
         keyMetrics: [
           { metric: 'Cholesterol', value: '245 mg/dL', status: 'elevated' },
           { metric: 'Sleep Quality', value: '4/10', status: 'poor' },
@@ -108,23 +74,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         teamInvolved: ['Ruby', 'Rachel', 'Advik'],
         insights: 'Consistency begins to pay off with measurable improvements in energy and sleep.',
         detailedDescription: 'Arun starts seeing real changes. His energy levels improve, and he successfully maintains his routine during a business trip to Singapore.',
-        conversations: [
-          {
-            speaker: 'Advik',
-            message: 'Your HRV data shows a 15% improvement. The stress management techniques are working.',
-            alignment: 'left'
-          },
-          {
-            speaker: 'Arun',
-            message: 'I actually felt energized after my Singapore trip instead of exhausted. This is new for me.',
-            alignment: 'right'
-          },
-          {
-            speaker: 'Rachel',
-            message: 'That\'s the power of consistent movement. Your body is adapting beautifully.',
-            alignment: 'left'
-          }
-        ],
         keyMetrics: [
           { metric: 'Energy Level', value: '+25%', status: 'improved' },
           { metric: 'HRV', value: '+15%', status: 'improved' },
@@ -150,23 +99,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         teamInvolved: ['Full Elyx Team', 'Dr. Warren', 'Neal (Concierge Lead)'],
         insights: 'Significant health improvements validate the personalized approach and motivate continued progress.',
         detailedDescription: 'The 12-week mark brings remarkable results. Arun\'s cholesterol drops significantly, his resting heart rate improves, and he feels the best he has in years.',
-        conversations: [
-          {
-            speaker: 'Dr. Warren',
-            message: 'Your latest results are outstanding. LDL cholesterol down 15%, resting heart rate decreased by 16 bpm.',
-            alignment: 'left'
-          },
-          {
-            speaker: 'Arun',
-            message: 'I can\'t believe these numbers. I feel like I\'ve gained 10 years of my life back.',
-            alignment: 'right'
-          },
-          {
-            speaker: 'Neal',
-            message: 'This is just the beginning. We\'re building a foundation for lifelong health.',
-            alignment: 'left'
-          }
-        ],
         keyMetrics: [
           { metric: 'LDL Cholesterol', value: '-15%', status: 'excellent' },
           { metric: 'Resting Heart Rate', value: '-16 bpm', status: 'excellent' },
@@ -192,18 +124,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
         teamInvolved: ['Full Elyx Team'],
         insights: 'The transformation is complete, but the journey continues with advanced optimization and family health planning.',
         detailedDescription: 'Six months later, Arun and his 12-year-old son embark on a challenging trek in the Himalayas - something he never thought possible before starting his health journey.',
-        conversations: [
-          {
-            speaker: 'Arun',
-            message: 'You didn\'t just give me a plan; you gave me back my future. I\'m hiking with my son in the Himalayas!',
-            alignment: 'right'
-          },
-          {
-            speaker: 'Ruby',
-            message: 'Seeing you achieve your goals and create these memories with your family - this is why we do what we do.',
-            alignment: 'left'
-          }
-        ],
         finalImage: {
           description: 'A picture of Mr. Sharma and his son hiking in the mountains, both smiling and healthy.',
           quote: 'You didn\'t just give me a plan; you gave me back my future.'
@@ -332,30 +252,6 @@ const JourneyTimeline: React.FC<JourneyTimelineProps> = ({ currentWeek, setCurre
 
                   {isExpanded && (
                     <div className="mt-6 pt-6 border-t border-gray-100 space-y-6 animate-in slide-in-from-top duration-300">
-                      {/* Conversations */}
-                      {phase.conversations && (
-                        <div className="bg-gray-50 rounded-xl p-6">
-                          <h4 className="font-semibold text-gray-800 mb-4 flex items-center">
-                            <MessageSquare className="mr-2" size={18} />
-                            Team Conversations
-                          </h4>
-                          <div className="space-y-4">
-                            {phase.conversations.map((conv, idx) => (
-                              <div key={idx} className={`flex ${conv.alignment === 'right' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`max-w-xs px-4 py-3 rounded-2xl ${
-                                  conv.alignment === 'right' 
-                                    ? 'bg-blue-500 text-white' 
-                                    : 'bg-white border border-gray-200 text-gray-800'
-                                }`}>
-                                  <div className="font-medium text-sm mb-1">{conv.speaker}</div>
-                                  <div className="text-sm">{conv.message}</div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
                       {/* Key Metrics */}
                       {phase.keyMetrics && (
                         <div className="bg-blue-50 rounded-xl p-6">
